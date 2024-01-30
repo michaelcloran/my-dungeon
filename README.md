@@ -66,7 +66,7 @@ if you attack dragon with long sword and big shield you win 100% health
 The game has a normal mode which shows the plans of the building
 and a cheat mode which shows the plans of the building and enemys and powerups by rooms
 
-### flowchart
+### User interface flowchart
 
 ![Screenshot of flow chart for game](assets/readme_images/main_flowchart.png)
 
