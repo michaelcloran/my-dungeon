@@ -63,7 +63,7 @@ class Dungeon:
 
     def get_random_position_in_random_room(self):
         
-        randomRoomValue = random.randint(0, (12-1))#12 rooms
+        randomRoomValue = random.randint(0, (11))#12 rooms
         randomPosition = random.randint(1,4) # 1 north, 2 east, 3 west, 4 center remember south is a door
         
         print("randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
@@ -74,7 +74,7 @@ class Dungeon:
                 self.get_random_position_in_random_room()
             else:
                 print("north randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomRoomValue, randomPosition
+                return [randomRoomValue, randomPosition]
                 
         elif randomPosition == 2:#east
             if self.roomObjList[randomRoomValue].east != Room.wall:
@@ -82,7 +82,7 @@ class Dungeon:
                 self.get_random_position_in_random_room()
             else:
                 print("east randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomRoomValue, randomPosition
+                return [randomRoomValue, randomPosition]
 
         elif randomPosition == 3:#west
             if self.roomObjList[randomRoomValue].west != Room.wall:
@@ -90,7 +90,7 @@ class Dungeon:
                 self.get_random_position_in_random_room()
             else:
                 print("west randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomRoomValue, randomPosition
+                return [randomRoomValue, randomPosition]
 
         elif randomPosition == 4:#center
             if self.roomObjList[randomRoomValue].center != Room.center:
@@ -98,7 +98,7 @@ class Dungeon:
                 self.get_random_position_in_random_room()
             else:
                 print("center randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomRoomValue, randomPosition
+                return [randomRoomValue, randomPosition]
 
     def get_random_position(self,randomRoomValue):
                 
@@ -109,7 +109,7 @@ class Dungeon:
         if randomPosition == 1:#north
             if self.roomObjList[randomRoomValue].north != Room.wall:
                 print("already entity at north")
-                self.get_random_position_in_random_room()
+                self.get_random_position(randomRoomValue)
             else:
                 print("north randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return randomPosition
@@ -117,7 +117,7 @@ class Dungeon:
         elif randomPosition == 2:#east
             if self.roomObjList[randomRoomValue].east != Room.wall:
                 print("already entity at east")
-                self.get_random_position_in_random_room()
+                self.get_random_position(randomRoomValue)
             else:
                 print("east randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return randomPosition
@@ -125,7 +125,7 @@ class Dungeon:
         elif randomPosition == 3:#west
             if self.roomObjList[randomRoomValue].west != Room.wall:
                 print("already entity at west")
-                self.get_random_position_in_random_room()
+                self.get_random_position(randomRoomValue)
             else:
                 print("west randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return randomPosition
@@ -133,7 +133,7 @@ class Dungeon:
         elif randomPosition == 4:#center
             if self.roomObjList[randomRoomValue].center != Room.center:
                 print("already entity at center")
-                self.get_random_position_in_random_room()
+                self.get_random_position(randomRoomValue)
             else:
                 print("center randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return randomPosition
@@ -149,10 +149,24 @@ class Dungeon:
 
         for x in range( (len(listOfDragonsInRooms)+len(listOfWeaponssInRooms)+len(listOfMediPacksInRooms))-1):#remember only 18 entities for this simulation so get_random_position_in_randon_room will be called 18 times
             #print("RV:RP:"+str(self.get_random_position_in_random_room()))
+            ##randomRoomValue, randomPosition = self.get_random_position_in_random_room()
+            randomValues = self.get_random_position_in_random_room()
+            while randomValues == None:
+                randomValues = self.get_random_position_in_random_room()
+            print(randomValues)
+            print("list rv:"+str(randomValues[0])+" RP:"+str(randomValues[1]))
+
+            randomRoomValue = randomValues[0]
+            randomPosition = randomValues[1]
+
+            
+            """
             randomRoomValue = random.randint(0, (12-1))#12 rooms
+            
             randomPosition = self.get_random_position(randomRoomValue)
             while randomPosition == None:
                 randomPosition = self.get_random_position(randomRoomValue)
+            """
             
             print("add_objects_to_roomms randomPosition:"+str(randomPosition))
 
@@ -210,7 +224,7 @@ class Dungeon:
             print(strMainWall)
 
     def show_dungeon_plan_with_entities(self):
-        print("Cheat Dungeon planan\nThe ! is a door and d little dragon and D big Dragon\ns for little shield and S for big shield\nw for little sword and W for big sword\nH for medi pack\n")        
+        print("\nCheat Dungeon planan\nThe ! is a door and d little dragon and D big Dragon\ns for little shield and S for big shield\nw for little sword and W for big sword\nH for medi pack\n")        
         print("Dungeon Plan")
         str1 = '-'
         str2 = "|"
@@ -221,6 +235,7 @@ class Dungeon:
 
         for obj in self.roomObjList:
             print("RoomObjList")
+            print("RoomNumber:"+str(obj.roomNumber))
             print("N:"+str(obj.north))
             print("E:"+str(obj.east))
             print("W:"+str(obj.west))
@@ -237,26 +252,27 @@ class Dungeon:
                         if self.roomObjList[0].north != 1:
                             floorPlanStr = floorPlanStr + str2 + self.roomObjList[0].north
                         else:
-                            floorPlanStr = floorPlanStr + str2 + spce*5 + str3 + "1" 
+                            floorPlanStr = floorPlanStr + str2 +spce  
                         
                         if self.roomObjList[0].center != 2:
-                            floorPlanStr = floorPlanStr + self.roomObjList[0].center + spce*2 + str3
+                            floorPlanStr = floorPlanStr + spce*2+ self.roomObjList[0].center +spce + str3 + "1"
                         else:
-                            floorPlanStr = floorPlanStr + spce*3
+                            floorPlanStr = floorPlanStr  +spce*4 + str3 + "1"
 
 
                         #put in corridore 
-                        floorPlanStr = floorPlanStr + spce*5
+                        floorPlanStr = floorPlanStr + spce*3
+
                         #room2
                         if self.roomObjList[1].center != 2:
-                            floorPlanStr = floorPlanStr + str3 + spce + self.roomObjList[1].center + spce
+                            floorPlanStr = floorPlanStr + "2" + str3 + spce*2 + self.roomObjList[1].center
                         else:
                             floorPlanStr = floorPlanStr + "2" + str3 + spce*3
 
                         if self.roomObjList[1].north != 1:
-                            floorPlanStr = floorPlanStr + self.roomObjList[1].north + str2
+                            floorPlanStr = floorPlanStr  +spce + self.roomObjList[1].north   + str2
                         else:
-                            floorPlanStr = floorPlanStr + spce + str2
+                            floorPlanStr = floorPlanStr + spce*2 + str2
 
                         print(floorPlanStr)
                         #print(str2 + spce*5 + str3 + "1" +spce*3+ "2" +str3 + spce*5 + str2)
