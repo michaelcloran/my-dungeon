@@ -41,12 +41,10 @@ The dungeon is made up of 6 rooms to the north and 6 room to the south of the co
 The Dungeon class has 1 inherited classs room
 
 A Dungeon has 12 rooms
-6 rooms have a south side door
-6 rooms with north side door
 
 The level has 6 dragons and 3 big dragons
 the big dragons require a big shield and a long sword to kill 
-The dragons are randomly generated in the rooms n,s,e,w,c
+The dragons are randomly generated in the rooms North, South, East, West, Center
 
 you need a long sword to kill a big dragon and a sword to kill a little dragon
 there is 3 powerups for swords in the level a sword and a long sword
