@@ -37,7 +37,7 @@ Spec for game
 
 A Dungeon has a corridore and the corridore has rooms
 
-The Dungeon class has 1 inherited classs room
+The Dungeon has a Class Dungeon and a Room class
 
 A Dungeon has 12 rooms
 
