@@ -36,7 +36,6 @@ Happy coding!
 Spec for game
 
 A Dungeon has a corridore and the corridore has rooms
-The dungeon is made up of 6 rooms to the north and 6 room to the south of the corridore
 
 The Dungeon class has 1 inherited classs room
 
