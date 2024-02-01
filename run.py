@@ -13,7 +13,6 @@ class Room:
     wall = 1
     center = 2
     
-
     def __init__(self):
         self.north = Room.wall
         self.south = Room.door
@@ -46,15 +45,12 @@ class Dungeon:
         self.number_of_rooms = number_of_rooms
         self.create_rooms(number_of_rooms)
 
-    
-
     def add_objects_to_rooms(self, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
 
         for x in range( (len(listOfDragonsInRooms)+len(listOfWeaponssInRooms)+len(listOfMediPacksInRooms))-1):#remember only 18 entities for this simulation so get_random_position_in_randon_room will be called 18 times
             randomRoomValue, randomPosition = Dungeon.get_random_position_in_random_room()
             
             Dungeon.roomObjList[randomRoomValue].add_entity(randomPosition, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-
 
     def get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
         #rememeber the dungeon only has 12 Rooms
@@ -123,8 +119,35 @@ class Dungeon:
             
             print(strMainWall)
 
+    def show_dungeon_plan_with_entities(self):
+        print("Cheat Dungeon planan\nThe ! is a door and d little dragon and D big Dragon\ns for little shield and S for big shield\nw for little sword and W for big sword\nH for medi pack\n")        
+        print("Dungeon Plan")
+        str1 = '-'
+        str2 = "|"
+        str3 = "!"
+        strMainWall = str1 * 19
+        spce = ' '
+        print(strMainWall)
+        for x in range(6):# number of rooms over 2
+            for i in range(5):
+                if i == 2:
+                    if x == 0:
+                        print(str2 + spce*5 + str3 + "1" +spce*3+ "2" +str3 + spce*5 + str2)
+                    elif x == 1:
+                        print(str2 + spce*5 + str3 + "3" +spce*3+ "4" +str3 + spce*5 + str2)
+                    elif x == 2:
+                        print(str2 + spce*5 + str3 + "5" +spce*3+ "6" +str3 + spce*5 + str2)
+                    elif x == 3:
+                        print(str2 + spce*5 + str3 + "7" +spce*3+ "8" +str3 + spce*5 + str2)
+                    elif x == 4:
+                        print(str2 + spce*5 + str3 + "9" +spce*2+ "10" +str3 + spce*5 + str2)
+                    elif x == 5:
+                        print(str2 + spce*5 + str3 + "11" +spce*1+ "12" +str3 + spce*5 + str2)
+                    
+                else:
+                    print(str2 + spce*5+ str2 + spce*5 + str2 +spce*5 + str2)
             
-
+            print(strMainWall)
                 
 def main():
     dungeon = Dungeon(12)
