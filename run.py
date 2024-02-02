@@ -2,7 +2,7 @@ import random
 # PP3 project by Michael Cloran
 #1/2/2024
 """
-This si a basic single user Dungeon game
+This is a basic single user Dungeon game
 """
 
 class Room:
@@ -19,160 +19,76 @@ class Room:
         self.east = Room.wall
         self.west = Room.wall
         self.center = Room.center
-        self.listOfEntitiesInRooms = []
         self.roomNumber = 0
-
-    def add_entity(self,randomPosition, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
-        randomEntity = ""
-        print("randomPosition:"+str(randomPosition))
-        if randomPosition == 1: #north
-            randomEntity = self.get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            return  randomEntity
-        elif randomPosition == 2:#east
-            randomEntity = self.get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            return  randomEntity
-        elif randomPosition == 3:#west
-            randomEntity = self.get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            return  randomEntity
-        elif randomPosition == 4:#center
-            randomEntity = self.get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            return  randomEntity
-
-    def get_random_entity(self,listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
-        #rememeber the dungeon only has 12 Rooms
-        if(len(self.listOfEntitiesInRooms) == 0):
-            self.listOfEntitiesInRooms = listOfDragonsInRooms + listOfWeaponssInRooms+ listOfMediPacksInRooms
-        
-        randomInteger = random.randint(0, (len(self.listOfEntitiesInRooms)-1) )
-        strToReturn = self.listOfEntitiesInRooms[randomInteger]
-        self.listOfEntitiesInRooms.pop(randomInteger)
-        print("strToReturn:"+strToReturn)
-        return strToReturn
-
+    
 class Dungeon:
     """The Dungeon class is to create and manage the dungeon"""
-    #roomObjList = []
-    #listOfEntitiesInRooms = []
-
-    def create_rooms(self,number_of_rooms):
     
+    def create_rooms(self,number_of_rooms):
+        """
+        creates the rooms and stores a room object in the roomObjList
+        """
         for x in range(number_of_rooms):
             roomObj = Room()
             roomObj.roomNumber = (x+1)
             self.roomObjList.append(roomObj)
 
     def get_random_position_in_random_room(self):
-        
+        """
+        get a random room and random position (north, east, west, center)
+        It tests for possible collisions where a position is already taken
+        and thus does a recursive call to another random room and random position
+        """
         randomRoomValue = random.randint(0, (11))#12 rooms
         randomPosition = random.randint(1,4) # 1 north, 2 east, 3 west, 4 center remember south is a door
         
-        print("randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-
         if randomPosition == 1:#north
             if self.roomObjList[randomRoomValue].north != Room.wall:
-                print("already entity at north")
                 self.get_random_position_in_random_room()
             else:
-                print("north randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return [randomRoomValue, randomPosition]
                 
         elif randomPosition == 2:#east
             if self.roomObjList[randomRoomValue].east != Room.wall:
-                print("already entity at east")
                 self.get_random_position_in_random_room()
             else:
-                print("east randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return [randomRoomValue, randomPosition]
 
         elif randomPosition == 3:#west
             if self.roomObjList[randomRoomValue].west != Room.wall:
-                print("already entity at west")
                 self.get_random_position_in_random_room()
             else:
-                print("west randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return [randomRoomValue, randomPosition]
 
         elif randomPosition == 4:#center
             if self.roomObjList[randomRoomValue].center != Room.center:
-                print("already entity at center")
                 self.get_random_position_in_random_room()
             else:
-                print("center randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
                 return [randomRoomValue, randomPosition]
 
-    def get_random_position(self,randomRoomValue):
-                
-        randomPosition = random.randint(1,4) # 1 north, 2 east, 3 west, 4 center remember south is a door
-        
-        print("randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-
-        if randomPosition == 1:#north
-            if self.roomObjList[randomRoomValue].north != Room.wall:
-                print("already entity at north")
-                self.get_random_position(randomRoomValue)
-            else:
-                print("north randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomPosition
-                
-        elif randomPosition == 2:#east
-            if self.roomObjList[randomRoomValue].east != Room.wall:
-                print("already entity at east")
-                self.get_random_position(randomRoomValue)
-            else:
-                print("east randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomPosition
-
-        elif randomPosition == 3:#west
-            if self.roomObjList[randomRoomValue].west != Room.wall:
-                print("already entity at west")
-                self.get_random_position(randomRoomValue)
-            else:
-                print("west randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomPosition
-
-        elif randomPosition == 4:#center
-            if self.roomObjList[randomRoomValue].center != Room.center:
-                print("already entity at center")
-                self.get_random_position(randomRoomValue)
-            else:
-                print("center randomRoomValue:"+str(randomRoomValue)+" randomPosition:"+str(randomPosition))
-                return randomPosition
-
-
-    def __init__(self,number_of_rooms):
+    def __init__(self,number_of_rooms):# Dungeon class constructor
         self.number_of_rooms = number_of_rooms
         self.roomObjList = []
         self.create_rooms(number_of_rooms)
         self.listOfEntitiesInRooms = []
 
     def add_objects_to_rooms(self, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
-
-        for x in range( (len(listOfDragonsInRooms)+len(listOfWeaponssInRooms)+len(listOfMediPacksInRooms))-1):#remember only 18 entities for this simulation so get_random_position_in_randon_room will be called 18 times
-            #print("RV:RP:"+str(self.get_random_position_in_random_room()))
-            ##randomRoomValue, randomPosition = self.get_random_position_in_random_room()
+        """
+        Goes through a for look to loop 18 times which is the amount of entities to be added to the game level
+        firstly get_random_position_in_random_room is called to get random room and random position
+        the a random entity is got and based on the random position and random room the entity is added
+        to the random room at random position
+        """
+        for x in range( (len(listOfDragonsInRooms)+len(listOfWeaponssInRooms)+len(listOfMediPacksInRooms))):#remember only 18 entities for this simulation so get_random_position_in_randon_room will be called 18 times
             randomValues = self.get_random_position_in_random_room()
             while randomValues == None:
                 randomValues = self.get_random_position_in_random_room()
-            print(randomValues)
-            print("list rv:"+str(randomValues[0])+" RP:"+str(randomValues[1]))
 
             randomRoomValue = randomValues[0]
             randomPosition = randomValues[1]
+            
+            randomEntity = self.get_random_entity(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
 
-            
-            """
-            randomRoomValue = random.randint(0, (12-1))#12 rooms
-            
-            randomPosition = self.get_random_position(randomRoomValue)
-            while randomPosition == None:
-                randomPosition = self.get_random_position(randomRoomValue)
-            """
-            
-            print("add_objects_to_roomms randomPosition:"+str(randomPosition))
-
-            #self.roomObjList[randomRoomValue].add_entity(randomPosition, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            randomEntity = self.roomObjList[randomRoomValue].add_entity(randomPosition, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)
-            print("randomEntity:"+randomEntity)
             if randomPosition == 1: #north
                 self.roomObjList[randomRoomValue].north = randomEntity
             elif randomPosition == 2:#east
@@ -182,19 +98,31 @@ class Dungeon:
             elif randomPosition == 4: #center
                 self.roomObjList[randomRoomValue].center = randomEntity
 
+        
     def get_random_entity(self,listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
-        #rememeber the dungeon only has 12 Rooms
-        if(len(self.listOfEntitiesInRooms) == 0):
+        """
+        The listOfEntitiesInRooms contains a list of entities to be added to the game 
+        a random entity is picked from the list and that entity is removed from the listOfEntitiesInRooms
+        the random entity is returned
+        """
+
+        #rememeber the dungeon only has 12 Rooms 18 entities
+        if len(self.listOfEntitiesInRooms) == 0:
             self.listOfEntitiesInRooms = listOfDragonsInRooms + listOfWeaponssInRooms+ listOfMediPacksInRooms
         
         randomInteger = random.randint(0, (len(self.listOfEntitiesInRooms)-1) )
         strToReturn = self.listOfEntitiesInRooms[randomInteger]
-        self.listOfEntitiesInRooms.pop(randomInteger)
+
+        del self.listOfEntitiesInRooms[randomInteger]
+        #self.listOfEntitiesInRooms.pop(randomInteger)
+        
         return strToReturn
-    
-    
 
     def show_dungeon_plan(self):
+        """
+        Loops through a floor plan and displays the floor plan with
+        room numbers
+        """
         print("Dungeon Plan")
         str1 = '-'
         str2 = "|"
@@ -224,7 +152,10 @@ class Dungeon:
             print(strMainWall)
 
     def show_dungeon_plan_with_entities(self):
-        print("\nCheat Dungeon planan\nThe ! is a door and d little dragon and D big Dragon\ns for little shield and S for big shield\nw for little sword and W for big sword\nH for medi pack\n")        
+        """
+        Loops through floor plan and shows the entities for the game level
+        """
+        print("\nCheat Dungeon plan\nThe ! is a door and d little dragon and D big Dragon\ns for little shield and S for big shield\nw for little sword and W for big sword\nH for medi pack\n")        
         print("Dungeon Plan")
         str1 = '-'
         str2 = "|"
@@ -232,67 +163,142 @@ class Dungeon:
         strMainWall = str1 * 19
         spce = ' '
         print(strMainWall)
-
-        for obj in self.roomObjList:
-            print("RoomObjList")
-            print("RoomNumber:"+str(obj.roomNumber))
-            print("N:"+str(obj.north))
-            print("E:"+str(obj.east))
-            print("W:"+str(obj.west))
-            print("C:"+str(obj.center))
-            
-        print("End RoomObjList")
-
+        
         for x in range(6):# number of rooms over 2
             for i in range(5):
                 floorPlanStr = ""
-                if i == 2:
-                    if x == 0:
-                        #room 1
-                        if self.roomObjList[0].north != 1:
-                            floorPlanStr = floorPlanStr + str2 + self.roomObjList[0].north
-                        else:
-                            floorPlanStr = floorPlanStr + str2 +spce  
-                        
-                        if self.roomObjList[0].center != 2:
-                            floorPlanStr = floorPlanStr + spce*2+ self.roomObjList[0].center +spce + str3 + "1"
-                        else:
-                            floorPlanStr = floorPlanStr  +spce*4 + str3 + "1"
+                if i == 0:
+                    if x == 0:#room 1 and 2
+                        print(self.get_floor_plan_edges_string(0, 1, "east"))
+                    elif x == 1:#room 3 and 4
+                        print(self.get_floor_plan_edges_string(2, 3, "east"))
+                    elif x == 2:#room 5 and 6
+                        print(self.get_floor_plan_edges_string(4, 5, "east"))
+                    elif x == 3:#room 7 and 8
+                        print(self.get_floor_plan_edges_string(6, 7, "east"))
+                    elif x == 4:#room 9 and 10
+                        print(self.get_floor_plan_edges_string(8, 9, "east"))
+                    elif x == 5:#room 11 and 12
+                        print(self.get_floor_plan_edges_string(10, 11, "east"))
 
-
-                        #put in corridore 
-                        floorPlanStr = floorPlanStr + spce*3
-
-                        #room2
-                        if self.roomObjList[1].center != 2:
-                            floorPlanStr = floorPlanStr + "2" + str3 + spce*2 + self.roomObjList[1].center
-                        else:
-                            floorPlanStr = floorPlanStr + "2" + str3 + spce*3
-
-                        if self.roomObjList[1].north != 1:
-                            floorPlanStr = floorPlanStr  +spce + self.roomObjList[1].north   + str2
-                        else:
-                            floorPlanStr = floorPlanStr + spce*2 + str2
-
-                        print(floorPlanStr)
-                        #print(str2 + spce*5 + str3 + "1" +spce*3+ "2" +str3 + spce*5 + str2)
-                    elif x == 1:
-                        print(str2 + spce*5 + str3 + "3" +spce*3+ "4" +str3 + spce*5 + str2)
-                    elif x == 2:
-                        print(str2 + spce*5 + str3 + "5" +spce*3+ "6" +str3 + spce*5 + str2)
-                    elif x == 3:
-                        print(str2 + spce*5 + str3 + "7" +spce*3+ "8" +str3 + spce*5 + str2)
-                    elif x == 4:
-                        print(str2 + spce*5 + str3 + "9" +spce*2+ "10" +str3 + spce*5 + str2)
-                    elif x == 5:
-                        print(str2 + spce*5 + str3 + "11" +spce*1+ "12" +str3 + spce*5 + str2)
+                elif i == 2:
+                    if x == 0:#room 1 and 2 middle on door
+                        print(self.get_floor_plan_middle_string(0,1))
+                    elif x == 1:#room 3 and 4 middle on door
+                        print(self.get_floor_plan_middle_string(2,3))
+                    elif x == 2:#room 5 and 6 middle on door
+                        print(self.get_floor_plan_middle_string(4,5))
+                    elif x == 3:#room 7 and 8 middle on door
+                        print(self.get_floor_plan_middle_string(6,7))
+                    elif x == 4:#room 9 and 10 middle on door
+                        print(self.get_floor_plan_middle_string(8,9))
+                    elif x == 5:# room 11 and 12 middle on door
+                        print(self.get_floor_plan_middle_string(10,11))
                     
+                elif i == 4:
+                    if x == 0:#room 1 and 2
+                        print(self.get_floor_plan_edges_string(0, 1, "west"))
+                    elif x == 1:#room 3 and 4
+                        print(self.get_floor_plan_edges_string(2, 3, "west"))
+                    elif x == 2:#room 5 and 6
+                        print(self.get_floor_plan_edges_string(4, 5, "west"))
+                    elif x == 3:#room 7 and 8
+                        print(self.get_floor_plan_edges_string(6, 7, "west"))
+                    elif x == 4:#room 9 and 10
+                        print(self.get_floor_plan_edges_string(8, 9, "west"))
+                    elif x == 5:#room 11 and 12
+                        print(self.get_floor_plan_edges_string(10, 11, "west"))
                 else:
                     print(str2 + spce*5+ str2 + spce*5 + str2 +spce*5 + str2)
             
             print(strMainWall)
 
+    def get_floor_plan_edges_string(self, roomIndex1, roomIndex2, direction):
+        """
+        This function gets the east and west wall and adds entities to it if needed
+        """
+        str2 = "|"
+        str3 = "!"
+        spce = ' '
+        floorPlanStr = ""
+        if direction == "east":
+            #room1
+            if self.roomObjList[roomIndex1].east != 1:
+                floorPlanStr = floorPlanStr + str2 + spce*2 + self.roomObjList[roomIndex1].east + spce*2 + str2
+            else:
+                floorPlanStr = floorPlanStr + str2 + spce*5 + str2  
+                
+            #put in corridore 
+            floorPlanStr = floorPlanStr + spce*5
+
+            #room2
+            if self.roomObjList[roomIndex2].east != 1:
+                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].east + spce*2 + str2
+            else:
+                floorPlanStr = floorPlanStr  + str2 + spce*5 + str2
+        
+        elif direction == "west":
+            #room1
+            if self.roomObjList[roomIndex1].west != 1:
+                floorPlanStr = floorPlanStr + str2 + spce*2 + self.roomObjList[roomIndex1].west + spce*2 + str2
+            else:
+                floorPlanStr = floorPlanStr + str2 + spce*5 + str2 
+                
+            #put in corridore 
+            floorPlanStr = floorPlanStr + spce*5
+
+            #room2
+            if self.roomObjList[roomIndex2].west != 1:
+                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].west + spce*2 + str2
+            else:
+                floorPlanStr = floorPlanStr + str2 + spce*5 + str2
+        
+        return floorPlanStr
+
+    def get_floor_plan_middle_string(self,roomIndex1, roomIndex2):
+        """
+        This function gets the floorplan for the lines dealing with doors
+        and add room numbers
+        """
+        str1 = '-'
+        str2 = "|"
+        str3 = "!"
+        strMainWall = str1 * 19
+        spce = ' '
+        floorPlanStr = ""
+        #room 1
+        if self.roomObjList[roomIndex1].north != 1:
+            floorPlanStr = floorPlanStr + str2 + self.roomObjList[roomIndex1].north
+        else:
+            floorPlanStr = floorPlanStr + str2 +spce  
+                            
+        if self.roomObjList[roomIndex1].center != 2:
+            floorPlanStr = floorPlanStr + spce*2+ self.roomObjList[roomIndex1].center +spce + str3 + str(roomIndex1+1)
+        else:
+            floorPlanStr = floorPlanStr  +spce*4 + str3 + str(roomIndex1+1)
             
+            
+        #put in corridore 
+        if roomIndex2 != 9 and roomIndex2 != 11 and roomIndex2 != 10:
+            floorPlanStr = floorPlanStr + spce*3
+        elif roomIndex2 == 11:
+            floorPlanStr = floorPlanStr + spce
+        else:
+            floorPlanStr = floorPlanStr + spce*2
+
+        #room2
+        if self.roomObjList[roomIndex2].center != 2:
+            floorPlanStr = floorPlanStr + str(roomIndex2+1) + str3 + spce*2 + self.roomObjList[roomIndex2].center
+            
+        else:
+            floorPlanStr = floorPlanStr + str(roomIndex2+1) + str3 + spce*3
+
+        if self.roomObjList[roomIndex2].north != 1:
+            floorPlanStr = floorPlanStr  +spce + self.roomObjList[roomIndex2].north   + str2
+        else:
+            floorPlanStr = floorPlanStr + spce*2 + str2
+            
+        return floorPlanStr        
                 
 def main():
     dungeon = Dungeon(12)
