@@ -337,9 +337,9 @@ def  enter_dungeon_choice():
         if(validate_enter_dungeon_choice_data(data_str)):
             print("valid input")
             #enter room and display options
-            if int(data_str) == 13:
+            if int(data_str) == 13:# Exit game
                 break
-            
+            enter_room_choice(int(data_str))
 
 def validate_enter_dungeon_choice_data(value):
 
@@ -352,6 +352,42 @@ def validate_enter_dungeon_choice_data(value):
         return False
 
     return True
+
+def enter_room_choice(room_number):
+    data_str = 0
+    while data_str != 5:
+        print("*"*30)
+        print("*")
+        print(f"* You have entered Room  {room_number}")
+        print("* Choose an option")
+        print("*")
+        print("*"*30)
+
+    
+        print("1. go north")
+        print("2. go east")
+        print("3. go west")
+        print("4. goto middle of room")
+        print("5. go south and exit room")
+
+        data_str = input("Choose and option:\n")
+        if(validate_enter_room_choice_data(data_str)):
+            print("valid input")
+            #enter room and display options
+            if int(data_str) == 5:# Exit Room
+                break
+
+def validate_enter_room_choice_data(value):
+    
+    try:
+        val = int(value)
+        if not (val >= 1 and val <= 5):
+            raise ValueError(f"You must enter an Integer value 1 to 5 you entered {val}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True      
 
 def main():
     dungeon = Dungeon(12)
