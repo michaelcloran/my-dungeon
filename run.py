@@ -299,7 +299,60 @@ class Dungeon:
             floorPlanStr = floorPlanStr + spce*2 + str2
             
         return floorPlanStr        
-                
+
+def  enter_dungeon_choice():
+    data_str = 0
+    while data_str != 13:
+        print("*"*30)
+        print("* Welcome to my Dungeon")
+        print("* May you conquer and reap the benefits")
+        print("* Enter the rooms amd slay the dragons")
+        print("* Pickup health and weapons as you go")
+        print("*"*20)
+        print("*")
+        print("* Menu")
+        print("* Choose a room to goto")
+        print("*"*20)
+
+        print("1. Room 1")
+        print("2. Room 2")
+        print("3. Room 3")
+        print("4. Room 4")
+        print("5. Room 5")
+
+        print("6. Room 6")
+        print("7. Room 7")
+        print("8. Room 8")
+        print("9. Room 9")
+        print("10. Room 10")
+
+        print("11. Room 11")
+        print("12. Room 12")
+
+        print("13. Exit Game")
+        print("\nChoose an option 1 to 13")
+
+        data_str = input("Choose an option:\n")
+
+        if(validate_enter_dungeon_choice_data(data_str)):
+            print("valid input")
+            #enter room and display options
+            if int(data_str) == 13:
+                break
+            
+
+def validate_enter_dungeon_choice_data(value):
+
+    try:
+        val = int(value)
+        if not (val >= 1 and val <= 13):
+            raise ValueError(f"You must enter an Integer value 1 to 13 you entered {val}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again.\n")
+        return False
+
+    return True
+
 def main():
     dungeon = Dungeon(12)
 
@@ -319,6 +372,8 @@ def main():
     dungeon.add_objects_to_rooms(listOfDragonsInRooms,listOfWeaponssInRooms,listOfMediPacksInRooms)         
 
     dungeon.show_dungeon_plan_with_entities()
+    
+    enter_dungeon_choice()
 
 
 print("Welcome to my Dungeon")
