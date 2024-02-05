@@ -300,46 +300,70 @@ class Dungeon:
             
         return floorPlanStr        
 
-def  enter_dungeon_choice():
-    data_str = 0
-    while data_str != 13:
-        print("*"*30)
-        print("* Welcome to my Dungeon")
-        print("* May you conquer and reap the benefits")
-        print("* Enter the rooms amd slay the dragons")
-        print("* Pickup health and weapons as you go")
-        print("*"*20)
-        print("*")
-        print("* Menu")
-        print("* Choose a room to goto")
-        print("*"*20)
+    def  enter_dungeon_choice(self):
+        data_str = 0
+        while data_str != 13:
+            print("*"*30)
+            print("* Welcome to my Dungeon")
+            print("* May you conquer and reap the benefits")
+            print("* Enter the rooms amd slay the dragons")
+            print("* Pickup health and weapons as you go")
+            print("*"*20)
+            print("*")
+            print("* Menu")
+            print("* Choose a room to goto")
+            print("*"*20)
 
-        print("1. Room 1")
-        print("2. Room 2")
-        print("3. Room 3")
-        print("4. Room 4")
-        print("5. Room 5")
+            print("1. Room 1")
+            print("2. Room 2")
+            print("3. Room 3")
+            print("4. Room 4")
+            print("5. Room 5")
 
-        print("6. Room 6")
-        print("7. Room 7")
-        print("8. Room 8")
-        print("9. Room 9")
-        print("10. Room 10")
+            print("6. Room 6")
+            print("7. Room 7")
+            print("8. Room 8")
+            print("9. Room 9")
+            print("10. Room 10")
 
-        print("11. Room 11")
-        print("12. Room 12")
+            print("11. Room 11")
+            print("12. Room 12")
 
-        print("13. Exit Game")
-        print("\nChoose an option 1 to 13")
+            print("13. Exit Game")
+            print("\nChoose an option 1 to 13")
 
-        data_str = input("Choose an option:\n")
+            data_str = input("Choose an option:\n")
 
-        if(validate_enter_dungeon_choice_data(data_str)):
-            print("valid input")
-            #enter room and display options
-            if int(data_str) == 13:# Exit game
-                break
-            enter_room_choice(int(data_str))
+            if(validate_enter_dungeon_choice_data(data_str)):
+                print("valid input")
+                #enter room and display options
+                if int(data_str) == 13:# Exit game
+                    break
+                self.enter_room_choice(int(data_str))
+
+    def enter_room_choice(self,room_number):
+        data_str = 0
+        while data_str != 5:
+            print("*"*30)
+            print("*")
+            print(f"* You have entered Room  {room_number}")
+            print("* Choose an option")
+            print("*")
+            print("*"*30)
+
+            print("1. go north")
+            print("2. go east")
+            print("3. go west")
+            print("4. goto middle of room")
+            print("5. go south and exit room")
+
+            data_str = input("Choose and option:\n")
+            if(validate_enter_room_choice_data(data_str)):
+                print("valid input")
+                #enter room and display options
+                if int(data_str) == 5:# Exit Room
+                    break
+
 
 def validate_enter_dungeon_choice_data(value):
 
@@ -353,29 +377,6 @@ def validate_enter_dungeon_choice_data(value):
 
     return True
 
-def enter_room_choice(room_number):
-    data_str = 0
-    while data_str != 5:
-        print("*"*30)
-        print("*")
-        print(f"* You have entered Room  {room_number}")
-        print("* Choose an option")
-        print("*")
-        print("*"*30)
-
-    
-        print("1. go north")
-        print("2. go east")
-        print("3. go west")
-        print("4. goto middle of room")
-        print("5. go south and exit room")
-
-        data_str = input("Choose and option:\n")
-        if(validate_enter_room_choice_data(data_str)):
-            print("valid input")
-            #enter room and display options
-            if int(data_str) == 5:# Exit Room
-                break
 
 def validate_enter_room_choice_data(value):
     
@@ -409,7 +410,7 @@ def main():
 
     dungeon.show_dungeon_plan_with_entities()
     
-    enter_dungeon_choice()
+    dungeon.enter_dungeon_choice()
 
 
 print("Welcome to my Dungeon")
