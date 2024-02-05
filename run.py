@@ -301,6 +301,12 @@ class Dungeon:
         return floorPlanStr        
 
     def  enter_dungeon_choice(self):
+        """
+        This function displays the dungeon room menu 
+        asking to go to a room and validates the input 
+        if you enter option 13 the game is ended
+        """
+
         data_str = 0
         while data_str != 13:
             print("*"*30)
@@ -342,6 +348,13 @@ class Dungeon:
                 self.enter_room_choice(int(data_str))
 
     def enter_room_choice(self,room_number):
+        """
+        This function displays the options within a room
+        There is 3 options to be displayed for each direction 
+        either Attack if there is a dragon to that direction
+        or pickup an entity if there is an entity in that direction
+        or to just goto that direction
+        """
         data_str = 0
         while data_str != 5:
             print("*"*30)
@@ -396,6 +409,10 @@ class Dungeon:
                     break
     
     def show_entities_in_room(self, room_number):
+        """
+        This function detects if the room is empty and prints a room empty message
+        it also shows a message showing the entities in the room based on direction
+        """
         if self.roomObjList[(room_number-1)].north == Room.wall and self.roomObjList[(room_number-1)].east == Room.wall and self.roomObjList[(room_number-1)].west == Room.wall and self.roomObjList[(room_number-1)].center == Room.center:
             print("* Room is empty")
         else:
@@ -409,6 +426,10 @@ class Dungeon:
                 print(f"* To the center of the room there is a {self.parse_entity_string(self.roomObjList[(room_number-1)].center)}")
 
     def parse_entity_string(self, entity_string):
+        """
+        This function parses an entity string and returns a description 
+        string in english
+        """
         if entity_string == "d":
             return "little dragon"
         elif entity_string == "D":
@@ -425,7 +446,11 @@ class Dungeon:
             return "meddiepack"
 
 def validate_enter_dungeon_choice_data(value):
-
+    """
+    This function validates the user input for the dungeon room choice dialog
+    if the value chosen is not between 1 and 13 then a message is displayed 
+    also if the value is not an integer a message is displayed
+    """
     try:
         val = int(value)
         if not (val >= 1 and val <= 13):
@@ -438,7 +463,11 @@ def validate_enter_dungeon_choice_data(value):
 
 
 def validate_enter_room_choice_data(value):
-    
+    """
+    This function validates the options when in a room
+    if the value is not between 1 and 5 a message is diplayed
+    also if the value is not an integer a message is displayed
+    """
     try:
         val = int(value)
         if not (val >= 1 and val <= 5):
