@@ -369,16 +369,32 @@ class Dungeon:
     
     def show_entities_in_room(self, room_number):
         if self.roomObjList[(room_number-1)].north == Room.wall and self.roomObjList[(room_number-1)].east == Room.wall and self.roomObjList[(room_number-1)].west == Room.wall and self.roomObjList[(room_number-1)].center == Room.center:
-            print("Room is empty")
+            print("* Room is empty")
         else:
             if self.roomObjList[(room_number-1)].north != Room.wall:
-                print(f"To the north there is a {self.roomObjList[(room_number-1)].north}")
+                print(f"* To the north there is a {self.parse_entity_string(self.roomObjList[(room_number-1)].north)}")
             if self.roomObjList[(room_number-1)].east != Room.wall:
-                print(f"To the east there is a {self.roomObjList[(room_number-1)].east}")
+                print(f"* To the east there is a {self.parse_entity_string(self.roomObjList[(room_number-1)].east)}")
             if self.roomObjList[(room_number-1)].west != Room.wall:
-                print(f"To the west there is a {self.roomObjList[(room_number-1)].west}")
+                print(f"* To the west there is a {self.parse_entity_string(self.roomObjList[(room_number-1)].west)}")
             if self.roomObjList[(room_number-1)].center != Room.center:
-                print(f"To the center of the room there is a {self.roomObjList[(room_number-1)].center}")
+                print(f"* To the center of the room there is a {self.parse_entity_string(self.roomObjList[(room_number-1)].center)}")
+
+    def parse_entity_string(self, entity_string):
+        if entity_string == "d":
+            return "little dragon"
+        elif entity_string == "D":
+            return "big dragon"
+        elif entity_string == "s":
+            return "little shield"
+        elif entity_string == "S":
+            return "big shield"
+        elif entity_string == "w":
+            return "little sword"
+        elif entity_string == "W":
+            return "long sword"
+        elif entity_string == "H":
+            return "meddiepack"
 
 def validate_enter_dungeon_choice_data(value):
 
