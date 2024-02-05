@@ -232,8 +232,8 @@ class Dungeon:
             floorPlanStr = floorPlanStr + spce*5
 
             #room2
-            if self.roomObjList[roomIndex2].east != 1:
-                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].east + spce*2 + str2
+            if self.roomObjList[roomIndex2].west != 1:
+                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].west + spce*2 + str2# east
             else:
                 floorPlanStr = floorPlanStr  + str2 + spce*5 + str2
         
@@ -248,8 +248,8 @@ class Dungeon:
             floorPlanStr = floorPlanStr + spce*5
 
             #room2
-            if self.roomObjList[roomIndex2].west != 1:
-                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].west + spce*2 + str2
+            if self.roomObjList[roomIndex2].east != 1:
+                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].east + spce*2 + str2#west
             else:
                 floorPlanStr = floorPlanStr + str2 + spce*5 + str2
         
@@ -354,10 +354,38 @@ class Dungeon:
             print("*")
             print("*"*30)
 
-            print("1. go north")
-            print("2. go east")
-            print("3. go west")
-            print("4. goto middle of room")
+            if self.roomObjList[(room_number-1)].north != Room.wall:
+                if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
+                    print(f"1. Attack {self.parse_entity_string(self.roomObjList[(room_number-1)].north)} to the north")
+                else:
+                    print(f"1. Pickup {self.parse_entity_string(self.roomObjList[(room_number-1)].north)} to the north")
+            else:
+                print("1. go north")
+
+            if self.roomObjList[(room_number-1)].east != Room.wall:
+                if self.roomObjList[(room_number-1)].east == "d" or self.roomObjList[(room_number-1)].east == "D":
+                    print(f"2. Attack {self.parse_entity_string(self.roomObjList[(room_number-1)].east)} to the east")
+                else:
+                    print(f"2. Pickup {self.parse_entity_string(self.roomObjList[(room_number-1)].east)} to the east")
+            else:
+                print("2. go east")
+           
+            if self.roomObjList[(room_number-1)].west != Room.wall:
+                if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
+                    print(f"3. Attack {self.parse_entity_string(self.roomObjList[(room_number-1)].west)} to the west")
+                else:
+                    print(f"3. Pickup {self.parse_entity_string(self.roomObjList[(room_number-1)].west)} to the west")
+            else:
+                print("3. go west")
+
+            if self.roomObjList[(room_number-1)].center != Room.center:
+                if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
+                    print(f"4. Attack {self.parse_entity_string(self.roomObjList[(room_number-1)].center)} to the center")
+                else:
+                    print(f"4. Pickup {self.parse_entity_string(self.roomObjList[(room_number-1)].center)} to the center")
+            else:
+                print("4. go center of the room")
+            
             print("5. go south and exit room")
 
             data_str = input("Choose and option:\n")
