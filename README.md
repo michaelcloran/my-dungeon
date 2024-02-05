@@ -67,6 +67,10 @@ and a cheat mode which shows the plans of the building and enemys and powerups b
 
 ![Screenshot of flow chart for game](assets/readme_images/main_flowchart.png)
 
+### Dungeon Coordinates Map
+
+![Screenshot of level with compass](assets/readme_images/levelDirections.png)
+
 ### Wireframes
 
 From flow chart Choice 1
