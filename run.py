@@ -309,16 +309,16 @@ class Dungeon:
 
         data_str = 0
         while data_str != 13:
-            print("*"*30)
+            print("*"*40)
             print("* Welcome to my Dungeon")
             print("* May you conquer and reap the benefits")
             print("* Enter the rooms amd slay the dragons")
             print("* Pickup health and weapons as you go")
-            print("*"*20)
+            print("*"*40)
             print("*")
             print("* Menu")
             print("* Choose a room to goto")
-            print("*"*20)
+            print("*"*40)
 
             print("1. Room 1")
             print("2. Room 2")
@@ -357,7 +357,7 @@ class Dungeon:
         """
         data_str = 0
         while data_str != 5:
-            print("*"*30)
+            print("*"*40)
             print("*")
             print(f"* You have entered Room  {room_number}")
 
@@ -365,7 +365,7 @@ class Dungeon:
             
             print("* Choose an option")
             print("*")
-            print("*"*30)
+            print("*"*40)
 
             if self.roomObjList[(room_number-1)].north != Room.wall:
                 if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
