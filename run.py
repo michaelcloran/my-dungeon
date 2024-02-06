@@ -309,7 +309,7 @@ class Dungeon:
         """
 
         data_str = 0
-        while data_str != 13 and self.player_health != 0:
+        while data_str != 13 and self.player_health > 0:
             print("*"*40)
             print("* Welcome to my Dungeon")
             print("* May you conquer and reap the benefits")
@@ -359,12 +359,14 @@ class Dungeon:
         or to just goto that direction
         """
         data_str = 0
-        while data_str != 5 and self.player_health != 0:
+        while data_str != 5 and self.player_health > 0:
             print("*"*40)
             print("*")
             print(f"* You have entered Room  {room_number}")
 
             self.show_entities_in_room(room_number)
+            print("Player Health:"+str(self.player_health))
+            print(player_weapons_list)
             
             print("* Choose an option")
             print("*")
@@ -409,8 +411,7 @@ class Dungeon:
                 #enter room and display options
                 if int(data_str) == 5:# Exit Room
                     break
-                if self.player_health == 0:
-                    break
+                         
                 self.move_forward(int(data_str),room_number)
 
     def move_forward(self, option, room_number):
@@ -487,13 +488,13 @@ class Dungeon:
             self.remove_entity(room_number, direction)
 
         elif "s" in player_weapons_list and "W" in player_weapons_list:
-            self.player_health = self.player_health - 75
+            self.player_health = self.player_health - 25
             print(f"Dragon slayed you have {self.player_health} health")
 
             self.remove_entity(room_number, direction)
 
         elif "S" in player_weapons_list and "w" in player_weapons_list:
-            self.player_health = self.player_health - 85
+            self.player_health = self.player_health - 15
             print(f"Dragon slayed you have {self.player_health} health")
 
             self.remove_entity(room_number, direction)
