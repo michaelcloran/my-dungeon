@@ -366,7 +366,13 @@ class Dungeon:
 
             self.show_entities_in_room(room_number)
             print("Player Health:"+str(self.player_health))
-            print(player_weapons_list)
+
+            message = "["
+            for obj in player_weapons_list:
+                message = message + self.parse_entity_string(obj)+ ","
+            if len(message) > 3:
+                message = message[:-1]
+            print(message+"]")
             
             print("* Choose an option")
             print("*")
