@@ -403,11 +403,76 @@ class Dungeon:
 
             data_str = input("Choose and option:\n")
             if(validate_enter_room_choice_data(data_str)):
-                print("valid input")
                 #enter room and display options
                 if int(data_str) == 5:# Exit Room
                     break
+                self.move_forward(int(data_str),room_number)
+
+    def move_forward(self, option, room_number):
+        if option == 1:#north
+            if self.roomObjList[(room_number-1)].north != Room.wall:
+                if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
+                   self.attack_dragon(option, room_number, "north") 
+                else:
+                    pass     
+        elif option == 2:#east
+            if self.roomObjList[(room_number-1)].east != Room.wall:
+                if self.roomObjList[(room_number-1)].east == "d" or self.roomObjList[(room_number-1)].east == "D":
+                   self.attack_dragon(option, room_number, "east")
+                else:
+                    pass     
+        elif option == 3:#west
+            if self.roomObjList[(room_number-1)].west != Room.wall:
+                if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
+                   self.attack_dragon(option, room_number, "west")
+                else:
+                    pass     
+        elif option == 4:#center  
+            if self.roomObjList[(room_number-1)].center != Room.wall:
+                if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
+                   self.attack_dragon(room_number, "center")
+                else:
+                    pass     
+
+    def attack_dragon(self, room_number, direction):
+        if "s" in player_weapons_list and "w" in player_weapons_list:
+            player_health = player_health - 50
+            print(f"Dragon slayed you have {player_health} health")
+            
+            self.remove_entity(room_number, direction)
+
+        elif "s" in player_weapons_list and "W" in player_weapons_list:
+            player_health = player_health - 75
+            print(f"Dragon slayed you have {player_health} health")
+
+            self.remove_entity(room_number, direction)
+
+        elif "S" in player_weapons_list and "w" in player_weapons_list:
+            player_health = player_health - 85
+            print(f"Dragon slayed you have {player_health} health")
+
+            self.remove_entity(room_number, direction)
+
+        elif "S" in player_weapons_list and "W" in player_weapons_list:
+            print(f"Dragon slayed you have {player_health} health")
+
+            self.remove_entity(room_number, direction)
+
+        else:
+            player_health = 0
+            print("Game Over the player was killed")
+
     
+    def remove_entity(self, room_number, direction):
+            if direction == "north":
+                self.roomObjList[(room_number-1)].north == Room.wall
+            elif direction == "east":
+                self.roomObjList[(room_number-1)].east == Room.wall
+            elif direction == "west":
+                self.roomObjList[(room_number-1)].west == Room.wall
+            elif direction == "center":
+                self.roomObjList[(room_number-1)].center == Room.center
+
     def show_entities_in_room(self, room_number):
         """
         This function detects if the room is empty and prints a room empty message
@@ -480,6 +545,11 @@ def validate_enter_room_choice_data(value):
 
 def main():
     dungeon = Dungeon(12)
+
+    global player_health
+    player_health = 100
+    global player_weapons_list
+    player_weapons_list = []
 
     """
     display an empty Dungeon
