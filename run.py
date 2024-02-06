@@ -414,7 +414,7 @@ class Dungeon:
                 if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
                    self.attack_dragon(option, room_number, "north") 
                 else:
-                    pass     
+                    self.pickup_entity(room_number, "north")    
         elif option == 2:#east
             if self.roomObjList[(room_number-1)].east != Room.wall:
                 if self.roomObjList[(room_number-1)].east == "d" or self.roomObjList[(room_number-1)].east == "D":
@@ -433,6 +433,16 @@ class Dungeon:
                    self.attack_dragon(room_number, "center")
                 else:
                     pass     
+
+    def pickup_entity(self, room_number, direction):
+        if direction == "north":
+            player_weapons_list.append(self.roomObjList[(room_number-1)].north)
+        elif direction == "east":
+            player_weapons_list.append(self.roomObjList[(room_number-1)].east)
+        elif direction == "west":
+             player_weapons_list.append(self.roomObjList[(room_number-1)].west)
+        elif direction == "center":
+             player_weapons_list.append(self.roomObjList[(room_number-1)].center)
 
     def attack_dragon(self, room_number, direction):
         if "s" in player_weapons_list and "w" in player_weapons_list:
