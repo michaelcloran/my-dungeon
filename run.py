@@ -71,6 +71,7 @@ class Dungeon:
         self.roomObjList = []
         self.create_rooms(number_of_rooms)
         self.listOfEntitiesInRooms = []
+        self.player_health = 100
 
     def add_objects_to_rooms(self, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
         """
@@ -308,7 +309,7 @@ class Dungeon:
         """
 
         data_str = 0
-        while data_str != 13:
+        while data_str != 13 and self.player_health != 0:
             print("*"*40)
             print("* Welcome to my Dungeon")
             print("* May you conquer and reap the benefits")
@@ -346,6 +347,8 @@ class Dungeon:
                 if int(data_str) == 13:# Exit game
                     break
                 self.enter_room_choice(int(data_str))
+                if self.player_health == 0:
+                    break
 
     def enter_room_choice(self,room_number):
         """
@@ -356,7 +359,7 @@ class Dungeon:
         or to just goto that direction
         """
         data_str = 0
-        while data_str != 5:
+        while data_str != 5 and self.player_health != 0:
             print("*"*40)
             print("*")
             print(f"* You have entered Room  {room_number}")
@@ -406,82 +409,114 @@ class Dungeon:
                 #enter room and display options
                 if int(data_str) == 5:# Exit Room
                     break
+                if self.player_health == 0:
+                    break
                 self.move_forward(int(data_str),room_number)
 
     def move_forward(self, option, room_number):
         if option == 1:#north
             if self.roomObjList[(room_number-1)].north != Room.wall:
                 if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
-                   self.attack_dragon(option, room_number, "north") 
+                   self.attack_dragon(room_number, "north") 
                 else:
                     self.pickup_entity(room_number, "north")    
         elif option == 2:#east
             if self.roomObjList[(room_number-1)].east != Room.wall:
                 if self.roomObjList[(room_number-1)].east == "d" or self.roomObjList[(room_number-1)].east == "D":
-                   self.attack_dragon(option, room_number, "east")
+                   self.attack_dragon(room_number, "east")
                 else:
-                    pass     
+                    self.pickup_entity(room_number, "east")      
         elif option == 3:#west
             if self.roomObjList[(room_number-1)].west != Room.wall:
                 if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
-                   self.attack_dragon(option, room_number, "west")
+                   self.attack_dragon(room_number, "west")
                 else:
-                    pass     
+                    self.pickup_entity(room_number, "west")     
         elif option == 4:#center  
             if self.roomObjList[(room_number-1)].center != Room.wall:
                 if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
                    self.attack_dragon(room_number, "center")
                 else:
-                    pass     
+                    self.pickup_entity(room_number, "center")  
 
     def pickup_entity(self, room_number, direction):
         if direction == "north":
-            player_weapons_list.append(self.roomObjList[(room_number-1)].north)
+            if self.roomObjList[(room_number-1)].north == "H":
+               
+                self.player_health = 100
+            else:
+                player_weapons_list.append(self.roomObjList[(room_number-1)].north)
+            print("Pickedup:"+ self.parse_entity_string(self.roomObjList[(room_number-1)].north))
+            print("Contents of you weapons list:")
+            print(player_weapons_list)
+            self.remove_entity(room_number, direction)
         elif direction == "east":
-            player_weapons_list.append(self.roomObjList[(room_number-1)].east)
+            if self.roomObjList[(room_number-1)].east == "H":
+                
+                self.player_health = 100
+            else:
+                player_weapons_list.append(self.roomObjList[(room_number-1)].east)
+            print("Pickedup:"+ self.parse_entity_string(self.roomObjList[(room_number-1)].east))
+            print("Contents of you weapons list:")
+            print(player_weapons_list)
+            self.remove_entity(room_number, direction)
         elif direction == "west":
-             player_weapons_list.append(self.roomObjList[(room_number-1)].west)
+            if self.roomObjList[(room_number-1)].west == "H":
+                self.player_health =  100
+            else:
+                player_weapons_list.append(self.roomObjList[(room_number-1)].west)
+            print("Pickedup:"+ self.parse_entity_string(self.roomObjList[(room_number-1)].west))
+            print("Contents of you weapons list:")
+            print(player_weapons_list)
+            self.remove_entity(room_number, direction)
         elif direction == "center":
-             player_weapons_list.append(self.roomObjList[(room_number-1)].center)
+            if self.roomObjList[(room_number-1)].center == "H":
+                self.player_health = 100
+            else:
+                player_weapons_list.append(self.roomObjList[(room_number-1)].center)
+            print("Pickedup:"+ self.parse_entity_string(self.roomObjList[(room_number-1)].center))
+            print("Contents of you weapons list:")
+            print(player_weapons_list)
+            self.remove_entity(room_number, direction)
 
     def attack_dragon(self, room_number, direction):
         if "s" in player_weapons_list and "w" in player_weapons_list:
-            player_health = player_health - 50
-            print(f"Dragon slayed you have {player_health} health")
+            self.player_health = self.player_health - 50
+            print(f"Dragon slayed you have {self.player_health} health")
             
             self.remove_entity(room_number, direction)
 
         elif "s" in player_weapons_list and "W" in player_weapons_list:
-            player_health = player_health - 75
-            print(f"Dragon slayed you have {player_health} health")
+            self.player_health = self.player_health - 75
+            print(f"Dragon slayed you have {self.player_health} health")
 
             self.remove_entity(room_number, direction)
 
         elif "S" in player_weapons_list and "w" in player_weapons_list:
-            player_health = player_health - 85
-            print(f"Dragon slayed you have {player_health} health")
+            self.player_health = self.player_health - 85
+            print(f"Dragon slayed you have {self.player_health} health")
 
             self.remove_entity(room_number, direction)
 
         elif "S" in player_weapons_list and "W" in player_weapons_list:
-            print(f"Dragon slayed you have {player_health} health")
+            print(f"Dragon slayed you have {self.player_health} health")
 
             self.remove_entity(room_number, direction)
 
         else:
-            player_health = 0
+            self.player_health = 0
             print("Game Over the player was killed")
 
     
     def remove_entity(self, room_number, direction):
-            if direction == "north":
-                self.roomObjList[(room_number-1)].north == Room.wall
-            elif direction == "east":
-                self.roomObjList[(room_number-1)].east == Room.wall
-            elif direction == "west":
-                self.roomObjList[(room_number-1)].west == Room.wall
-            elif direction == "center":
-                self.roomObjList[(room_number-1)].center == Room.center
+        if direction == "north":
+            self.roomObjList[(room_number-1)].north = Room.wall
+        elif direction == "east":
+            self.roomObjList[(room_number-1)].east = Room.wall
+        elif direction == "west":
+            self.roomObjList[(room_number-1)].west = Room.wall
+        elif direction == "center":
+            self.roomObjList[(room_number-1)].center = Room.center
 
     def show_entities_in_room(self, room_number):
         """
@@ -556,10 +591,11 @@ def validate_enter_room_choice_data(value):
 def main():
     dungeon = Dungeon(12)
 
-    global player_health
-    player_health = 100
+    
     global player_weapons_list
     player_weapons_list = []
+    global playGame
+    playGame = True
 
     """
     display an empty Dungeon
