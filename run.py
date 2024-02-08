@@ -456,9 +456,10 @@ class Dungeon:
                 if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
                     self.attack_dragon(room_number, "west")
                 else:
+                    print("west:"+self.roomObjList[(room_number-1)].west)
                     self.pickup_entity(room_number, "west")     
         elif option == 4:  # center  
-            if self.roomObjList[(room_number-1)].center != Room.wall:
+            if self.roomObjList[(room_number-1)].center != Room.center:
                 if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
                     self.attack_dragon(room_number, "center")
                 else:
@@ -592,7 +593,6 @@ class Dungeon:
 
         if entity_string == "d":
             return "little dragon"
-
         elif entity_string == "D":
             return "big dragon"
         elif entity_string == "s":
