@@ -343,28 +343,18 @@ class Dungeon:
             print("* Choose a room to goto")
             print("*"*40)
 
-            print("1. Room 1")
-            print("2. Room 2")
-            print("3. Room 3")
-            print("4. Room 4")
-            print("5. Room 5")
-
-            print("6. Room 6")
-            print("7. Room 7")
-            print("8. Room 8")
-            print("9. Room 9")
-            print("10. Room 10")
-
-            print("11. Room 11")
-            print("12. Room 12")
-
+            print("1. Room 1 \t\t 2. Room 2")
+            print("3. Room 3 \t\t 4. Room 4")
+            print("5. Room 5 \t\t 6. Room 6")
+            print("7. Room 7 \t\t 8. Room 8")
+            print("9. Room 9 \t\t 10. Room 10")
+            print("11. Room 11 \t\t 12. Room 12")
             print("13. Exit Game")
             print("\nChoose an option 1 to 13")
 
             data_str = input("Choose an option:\n")
 
             if(validate_enter_dungeon_choice_data(data_str)):
-                print("valid input")
                 # enter room and display options
                 if int(data_str) == 13:  # Exit game
                     break
