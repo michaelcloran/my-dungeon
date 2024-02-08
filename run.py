@@ -421,6 +421,10 @@ class Dungeon:
                 self.move_forward(int(data_str),room_number)
 
     def move_forward(self, option, room_number):
+        """
+        This function moves the player to the north, south, east or west if there is a dragon it does and attack_dragon function
+        if there is a power up that that is picked up via the pickup_entity function
+        """
         if option == 1:#north
             if self.roomObjList[(room_number-1)].north != Room.wall:
                 if self.roomObjList[(room_number-1)].north == "d" or self.roomObjList[(room_number-1)].north == "D":
@@ -447,6 +451,9 @@ class Dungeon:
                     self.pickup_entity(room_number, "center")  
 
     def pickup_entity(self, room_number, direction):
+        """
+        This function pickups the weapons and health based on direction
+        """
         if direction == "north":
             if self.roomObjList[(room_number-1)].north == "H":
                
@@ -487,6 +494,11 @@ class Dungeon:
             self.remove_entity(room_number, direction)
 
     def attack_dragon(self, room_number, direction):
+        """
+        This function acks as a finite state machine a basic one to attack a dragon 
+        and based on the weapons the player has the health is adjusted based on rules
+        in the finite state machine
+        """
         if "s" in player_weapons_list and "w" in player_weapons_list:
             self.player_health = self.player_health - 50
             if self.player_health > 0:
@@ -525,6 +537,10 @@ class Dungeon:
 
     
     def remove_entity(self, room_number, direction):
+        """
+        This function sets the directions to room.wall and if
+        the direction is center it is set to room.center
+        """
         if direction == "north":
             self.roomObjList[(room_number-1)].north = Room.wall
         elif direction == "east":
