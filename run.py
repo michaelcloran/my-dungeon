@@ -456,7 +456,6 @@ class Dungeon:
                 if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
                     self.attack_dragon(room_number, "west")
                 else:
-                    print("west:"+self.roomObjList[(room_number-1)].west)
                     self.pickup_entity(room_number, "west")     
         elif option == 4:  # center  
             if self.roomObjList[(room_number-1)].center != Room.center:
@@ -591,21 +590,22 @@ class Dungeon:
         string in english
         """
 
-        if entity_string == "d":
+        if entity_string.strip() == "d":
             return "little dragon"
-        elif entity_string == "D":
+        elif entity_string.strip() == "D":
             return "big dragon"
-        elif entity_string == "s":
+        elif entity_string.strip() == "s":
             return "little shield"
-        elif entity_string == "S":
+        elif entity_string.strip() == "S":
             return "big shield"
-        elif entity_string == "w":
+        elif entity_string.strip() == "w":
             return "little sword"
-        elif entity_string == "W":
+        elif entity_string.strip() == "W":
             return "long sword"
-        elif entity_string == "H":
+        elif entity_string.strip() == "H":
             return "meddiepack"
-
+        else:
+            print(f"Error:{entity_string}")
 
 def validate_enter_dungeon_choice_data(value):
     """
@@ -661,7 +661,7 @@ def main():
     listOfDragonsInRooms = ["d", "d", "d", "d", "d", "d", "D", "D", "D"]
     # s is a small shield and a S is a large shield, a w is a small sword
     # and a W is a large sword
-    listOfWeaponssInRooms = ["s", "S"," S", "w", "W", "W"]
+    listOfWeaponssInRooms = ["s", "S", "S", "w", "W", "W"]
     # H is a medie pack when picked up restores the players health
     listOfMediPacksInRooms = ["H", "H", "H"]
 
