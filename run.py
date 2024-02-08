@@ -185,7 +185,7 @@ class Dungeon:
         strMainWall = str1 * 19
         spce = ' '
         print(strMainWall)
-        
+
         for x in range(6):  # number of rooms over 2
             for i in range(5):
                 floorPlanStr = ""
@@ -256,9 +256,9 @@ class Dungeon:
 
             # room2
             if self.roomObjList[roomIndex2].west != 1:
-                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].west + spce*2 + str2 
+                floorPlanStr = floorPlanStr + str2 + spce*2 + self.roomObjList[roomIndex2].west + spce*2 + str2 
             else:
-                floorPlanStr = floorPlanStr  + str2 + spce*5 + str2
+                floorPlanStr = floorPlanStr + str2 + spce*5 + str2
         
         elif direction == "west":
             # room1
@@ -272,7 +272,7 @@ class Dungeon:
 
             # room2
             if self.roomObjList[roomIndex2].east != 1:
-                floorPlanStr = floorPlanStr +  str2 + spce*2 + self.roomObjList[roomIndex2].east + spce*2 + str2 
+                floorPlanStr = floorPlanStr + str2 + spce*2 + self.roomObjList[roomIndex2].east + spce*2 + str2 
             else:
                 floorPlanStr = floorPlanStr + str2 + spce*5 + str2
         
@@ -299,7 +299,7 @@ class Dungeon:
         if self.roomObjList[roomIndex1].center != 2:
             floorPlanStr = floorPlanStr + spce*2+ self.roomObjList[roomIndex1].center + spce + str3 + str(roomIndex1+1)
         else:
-            floorPlanStr = floorPlanStr  +spce*4 + str3 + str(roomIndex1+1)
+            floorPlanStr = floorPlanStr + spce*4 + str3 + str(roomIndex1+1)
 
         # put in corridore 
         if roomIndex2 != 9 and roomIndex2 != 11 and roomIndex2 != 10:
@@ -470,7 +470,7 @@ class Dungeon:
         elif option == 4:  # center  
             if self.roomObjList[(room_number-1)].center != Room.wall:
                 if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
-                   self.attack_dragon(room_number, "center")
+                    self.attack_dragon(room_number, "center")
                 else:
                     self.pickup_entity(room_number, "center")  
 
@@ -481,7 +481,7 @@ class Dungeon:
 
         if direction == "north":
             if self.roomObjList[(room_number-1)].north == "H":
-               
+
                 self.player_health = 100
             else:
                 player_weapons_list.append(self.roomObjList[(room_number-1)].north)
@@ -501,7 +501,7 @@ class Dungeon:
             self.remove_entity(room_number, direction)
         elif direction == "west":
             if self.roomObjList[(room_number-1)].west == "H":
-                self.player_health =  100
+                self.player_health = 100
             else:
                 player_weapons_list.append(self.roomObjList[(room_number-1)].west)
             print("Pickedup:"+ self.parse_entity_string(self.roomObjList[(room_number-1)].west))
@@ -616,13 +616,14 @@ class Dungeon:
         elif entity_string == "H":
             return "meddiepack"
 
+
 def validate_enter_dungeon_choice_data(value):
     """
     This function validates the user input for the dungeon room choice dialog
     if the value chosen is not between 1 and 13 then a message is displayed 
     also if the value is not an integer a message is displayed
     """
-    
+
     try:
         val = int(value)
         if not (val >= 1 and val <= 13):
@@ -651,6 +652,7 @@ def validate_enter_room_choice_data(value):
 
     return True      
 
+
 def main():
     dungeon = Dungeon(12)
 
@@ -666,14 +668,14 @@ def main():
     dungeon.show_dungeon_plan()
 
     # d is a small dragon a D is a big dragon
-    listOfDragonsInRooms = ["d","d","d","d","d","d","D","D","D"]
+    listOfDragonsInRooms = ["d", "d", "d", "d", "d", "d", "D", "D", "D"]
     # s is a small shield and a S is a large shield, a w is a small sword
     # and a W is a large sword
-    listOfWeaponssInRooms = ["s","S","S","w","W","W"]
+    listOfWeaponssInRooms = ["s", "S"," S", "w", "W", "W"]
     # H is a medie pack when picked up restores the players health
-    listOfMediPacksInRooms = ["H","H","H"]
+    listOfMediPacksInRooms = ["H", "H", "H"]
 
-    dungeon.add_objects_to_rooms(listOfDragonsInRooms,listOfWeaponssInRooms,listOfMediPacksInRooms)         
+    dungeon.add_objects_to_rooms(listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms)         
 
     dungeon.show_dungeon_plan_with_entities()
     
