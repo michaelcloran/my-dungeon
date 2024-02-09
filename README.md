@@ -41,7 +41,7 @@ They can also attack dragons 9 in total 3 big dragons and 6 little dragons.
 ## How to play
 
 When the user enters the game they are shown a Room list and asked for a room number which they
-have to type and press enter then once in the room the contents of the room is decribed
+have to type and press enter then once in the room the contents of the room is described
 at the upper area of the room menu which has options to go north east west and south/door exit.
 
 If the player wants to cheat they can scroll up to the level plan which shows all rooms and entities
@@ -55,7 +55,7 @@ in the menu list and pressing enter.
 ## Existing Features
 
 * Random level generation 
-    * The game level is generated then a script to choose a random room and random position with random entity from the listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms combined to select a random entity from this list and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the listed created by appending lists listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms so 
+    * The game level is generated then a script to choose a random room and random position with random entity from the listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms combined to select a random entity from this list and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the list created by appending lists listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms so 
     that entity of the 18 is used up and this algorithm continues till there is no more entities.
     * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons.
 
@@ -67,6 +67,8 @@ in the menu list and pressing enter.
     * Also if the user enters a character which is not a number the validation shows an error message and rerenders the options list  
 
 ## Future Features   
+
+
 
 ## Wireframes/ Mockups and specification for the Game
 
