@@ -440,10 +440,37 @@ class Dungeon:
                 print("4. go center of the room")
             
             print("5. go south and exit room")
-            
+
+            data_str = input("Choose an option:\n")
+            while not (validate_enter_room_choice_data(data_str)):
+                data_str = input("Choose an option:\n")
+                if validate_enter_room_choice_data(data_str):
+                    # enter room and display options
+                    if int(data_str) == 5:  # Exit Room
+                        data_str = 5
+                        break
+
+                    print("tp11:"+data_str)
+
+            if int(data_str) == 5:  # Exit Room
+                print("Exit room")
+                break      
+            self.move_forward(int(data_str), room_number)
+
+            """
             return_val = self.get_enter_room_choice(room_number)
+            print("tp:"+str(return_val))
+            while return_val is None:
+                return_val = self.get_enter_room_choice(room_number)
+
+            print("tp1:"+str(return_val))
+
             if return_val == 5:
                 break
+
+            data_str = return_val
+            self.move_forward(int(return_val), room_number)
+            """
 
     def get_enter_room_choice(self, room_number):
         """
@@ -452,16 +479,19 @@ class Dungeon:
         if its not a valid choice the function is called again
         """
 
-        data_str = input("Choose an option:\n")
-        if validate_enter_room_choice_data(data_str):
+        dat_str = input("Choose an option:\n")
+        if validate_enter_room_choice_data(dat_str):
             # enter room and display options
-            if int(data_str) == 5:  # Exit Room
+            if int(dat_str) == 5:  # Exit Room
                 return 5
 
-            self.move_forward(int(data_str), room_number)
+            print("tp11:"+dat_str)
+            return dat_str
+            # self.move_forward(int(data_str), room_number)
                     
-        else:
-            self.get_enter_room_choice(room_number)
+        
+        self.get_enter_room_choice(room_number)
+        
 
     def move_forward(self, option, room_number):
         """
@@ -735,7 +765,7 @@ def display_intro():
     print("To play the game use the numbers on the menu of items and when asked for a")
     print("choice enter one and press enter")
     print("The goal of this game is to kill all the dragons in the least amount of time")
-    print("HINT: You need a sword and a shield to kill a dragon or youll be toast!")
+    print("HINT: You need a sword and a shield to kill a dragon or you'll be toast!")
     print("\n\n\n")
     print("1. play Game \t 2. Exit Game")
     print("\n\n\n")
