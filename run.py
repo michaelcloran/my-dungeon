@@ -353,15 +353,26 @@ class Dungeon:
             print("13. Exit Game")
             print("\nChoose an option 1 to 13")
 
-            data_str = input("Choose an option:\n")
+            self.get_enter_dungeon_choice_menu()
 
-            if(validate_enter_dungeon_choice_data(data_str)):
-                # enter room and display options
-                if int(data_str) == 13:  # Exit game
-                    break
-                self.enter_room_choice(int(data_str))
-                if self.player_health == 0:
-                    break
+    def get_enter_dungeon_choice_menu(self):
+        """
+        This function gets the user input and validates it 
+        if the user enter 13 the game is ended. If the
+        player health <= 0 the game is over
+        """
+
+        data_str = input("Enter option:\n")
+
+        if validate_enter_dungeon_choice_data(data_str):
+            # enter room and display options
+            if int(data_str) == 13:  # Exit game
+                sys.exit()
+            self.enter_room_choice(int(data_str))
+            if self.player_health <= 0:
+                sys.exit()
+        else:
+            self.get_enter_dungeon_choice_menu()
 
     def enter_room_choice(self, room_number):
         """
@@ -426,7 +437,7 @@ class Dungeon:
             
             print("5. go south and exit room")
 
-            data_str = input("Choose and option:\n")
+            data_str = input("Choose an option:\n")
             if validate_enter_room_choice_data(data_str):
                 # enter room and display options
                 if int(data_str) == 5:  # Exit Room
@@ -645,21 +656,27 @@ def validate_enter_room_choice_data(value):
 
 def validate_intro_choice_data(value):
     """
-    
+    This function validates the intro input data
+    if the value is not between 1 and 2 a error
+    message is displayed and if the value is
+    not a number an error message is displayed
     """
 
     try:
         val = int(value)
         if not (val >= 1 and val <= 2):
-            raise ValueError("Invalid choice: You mush enter a Number either 1 or 2!, please try again.\n")
-    except ValueError as e:
-        print("Invalid choice: You mush enter a Number either 1 or 2! a, please try again.\n")
+            raise ValueError()  
+    except ValueError:
+        print("Invalid choice: You mush enter a Number either 1 or 2!, please try again.\n")
         return False
 
     return True      
 
 
 def display_intro():
+    """
+    This function displays the intro screen
+    """
 
     print("Welcome to my Dungeon")
     print("You have entered an era of dragons")
@@ -675,7 +692,7 @@ def display_intro():
 
 def get_intro_input():
 
-    data_str = input("Enter option:")
+    data_str = input("Enter option:\n")
 
     if validate_intro_choice_data(data_str):
         if int(data_str) == 2:
