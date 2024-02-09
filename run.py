@@ -604,6 +604,7 @@ class Dungeon:
             endTime = time.time()
             durationOfGame = endTime - self.startTime 
             print(f"You took {durationOfGame} to play the game. Well done!!")
+            print("Play Again?")
             print("-"*40)
             display_intro()
             get_intro_input()
