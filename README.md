@@ -31,6 +31,34 @@ The deployment terminal is set to 80 columns by 24 rows. That means that each li
 
 Happy coding!
 
+# Single User Dungeon
+
+This game is a Python terminal game. Which runs in a Game Institute mock terminal on Heroku.
+
+Users can explore the game level by entering rooms and picking up weapons and health as they go.
+They can also attack dragons 9 in total 3 big dragons and 6 little dragons.
+
+## How to play
+
+When the user enters the game they are shown a Room list and asked for a room number which they
+have to type and press enter then once in the room the contents of the room is decribed
+at the upper area of the room menu which has options to go north east west and south/door exit.
+
+If the player wants to cheat they can scroll up to the level plan which shows all rooms and entities
+within the game level. This is handy for finding weapons and health by looking at the room floor plan.
+
+typical instructions once in a room are Attack dragon or pickup health etc by pressing a number
+in the menu list and pressing enter.
+
+## Features
+
+## Existing Features
+
+* Random level generation 
+    * The game level is generated then a script to choose a random room and random position with random entity from the listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms combined to select a random entity from this list and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the listed created by appending lists listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms so 
+    that entity of the 18 is used up and this algorithm continues till there is no more entities.
+
+
 ## Wireframes/ Mockups and specification for the Game
 
 Spec for game
