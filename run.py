@@ -1,5 +1,6 @@
 import random
 import sys
+import time
 # PP3 project by Michael Cloran
 # 1/2/2024
 # This is a basic single user Dungeon game
@@ -23,6 +24,7 @@ class Room:
         self.west = Room.wall
         self.center = Room.center
         self.roomNumber = 0
+        
 
 
 class Dungeon:
@@ -83,6 +85,7 @@ class Dungeon:
         self.listOfEntitiesInRooms = []
         self.player_health = 100
         self.numberOfDragons = 9
+        self.startTime = time.time()
 
     def add_objects_to_rooms(self, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
         """
@@ -578,14 +581,36 @@ class Dungeon:
 
             self.remove_entity(room_number, direction)
 
+        else:
+            self.player_health <= 0
+            print("-"*40)
+            print("Game Over the player was killed by Dragon")
+            endTime = time.time()
+            durationOfGame = endTime - self.startTime
+            durationOfGame = format(durationOfGame, ".2f")
+            print(f"You lasted:{durationOfGame}")
+            print("-"*40)
+            display_intro()
+            get_intro_input()
         
         if self.player_health <= 0:
+            print("-"*40)
             print("Game Over the player was killed by Dragon")
+            endTime = time.time()
+            durationOfGame = endTime - self.startTime
+            durationOfGame = format(durationOfGame, ".2f")
+            print(f"You lasted:{durationOfGame}")
+            print("-"*40)
             display_intro()
             get_intro_input()
 
         if self.numberOfDragons == 0:
+            print("-"*40)
             print("Game Over you killed all the Dragons")
+            endTime = time.time()
+            durationOfGame = self.startTime - endTime
+            print("You took {durationOfGame} to play the game. Well done!!")
+            print("-"*40)
             display_intro()
             get_intro_input()
 
