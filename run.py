@@ -97,7 +97,7 @@ class Dungeon:
         # get_random_position_in_randon_room will be called 18 times
         for x in range((len(listOfDragonsInRooms)+len(listOfWeaponssInRooms)+len(listOfMediPacksInRooms))):
             randomValues = self.get_random_position_in_random_room()
-            while randomValues == None:
+            while randomValues is None:
                 randomValues = self.get_random_position_in_random_room()
 
             randomRoomValue = randomValues[0]
@@ -438,9 +438,7 @@ class Dungeon:
             print("5. go south and exit room")
             
             return_val = self.get_enter_room_choice(room_number)
-            print("tp:"+str(return_val))
             if return_val == 5:
-                print("EXIT")
                 break
 
     def get_enter_room_choice(self, room_number):
@@ -454,16 +452,12 @@ class Dungeon:
         if validate_enter_room_choice_data(data_str):
             # enter room and display options
             if int(data_str) == 5:  # Exit Room
-                print("exit room")
                 return 5
 
             self.move_forward(int(data_str), room_number)
                     
         else:
             self.get_enter_room_choice(room_number)
-        
-
-            
 
     def move_forward(self, option, room_number):
         """
@@ -581,7 +575,9 @@ class Dungeon:
 
         else:
             self.player_health = 0
-            print("Game Over the player was killed")
+            print("Game Over the player was killed by Dragon")
+            display_intro()
+            get_intro_input()
 
     def remove_entity(self, room_number, direction):
         """
