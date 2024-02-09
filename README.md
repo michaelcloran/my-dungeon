@@ -57,7 +57,16 @@ in the menu list and pressing enter.
 * Random level generation 
     * The game level is generated then a script to choose a random room and random position with random entity from the listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms combined to select a random entity from this list and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the listed created by appending lists listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms so 
     that entity of the 18 is used up and this algorithm continues till there is no more entities.
+    * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons.
 
+* Input validation and error checking
+    * there is two validation script one for validating the room number on the dungeon rooms list and one for validating input once entered a room.
+    * Both input screens show a list and a number to select an item in the list
+    * Once an item is chosen the user inputs the number of the item and presses enter
+    * the validation checks for valid number and a range of number for the appropiate menu and displays an error message if the number is out of range
+    * Also if the user enters a character which is not a number the validation shows an error message and rerenders the options list  
+
+## Future Features   
 
 ## Wireframes/ Mockups and specification for the Game
 
