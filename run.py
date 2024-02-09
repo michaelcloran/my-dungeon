@@ -436,14 +436,34 @@ class Dungeon:
                 print("4. go center of the room")
             
             print("5. go south and exit room")
+            
+            return_val = self.get_enter_room_choice(room_number)
+            print("tp:"+str(return_val))
+            if return_val == 5:
+                print("EXIT")
+                break
 
-            data_str = input("Choose an option:\n")
-            if validate_enter_room_choice_data(data_str):
-                # enter room and display options
-                if int(data_str) == 5:  # Exit Room
-                    break
-                         
-                self.move_forward(int(data_str), room_number)
+    def get_enter_room_choice(self, room_number):
+        """
+        This function gets the room choice menu option
+        and validates it and moves the player if requested
+        if its not a valid choice the function is called again
+        """
+
+        data_str = input("Choose an option:\n")
+        if validate_enter_room_choice_data(data_str):
+            # enter room and display options
+            if int(data_str) == 5:  # Exit Room
+                print("exit room")
+                return 5
+
+            self.move_forward(int(data_str), room_number)
+                    
+        else:
+            self.get_enter_room_choice(room_number)
+        
+
+            
 
     def move_forward(self, option, room_number):
         """
@@ -647,8 +667,8 @@ def validate_enter_room_choice_data(value):
     try:
         val = int(value)
         if not (val >= 1 and val <= 5):
-            raise ValueError(f"You must enter an Integer value 1 to 5 you entered {val}")
-    except ValueError as e:
+            raise ValueError()  # f"You must enter an Integer value 1 to 5 you entered {val}")
+    except ValueError:
         print("Invalid choice:You must enter a number between 1 and 5, please try again.\n")
         return False
 
@@ -700,6 +720,7 @@ def get_intro_input():
         main()
     else:
         get_intro_input()
+
 
 def main():
     dungeon = Dungeon(12)
