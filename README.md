@@ -60,7 +60,7 @@ in the menu list and pressing enter.
     * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons. A typical cheat sheet 
     is shown below.
     
-    ![Screenshot of flow typical cheat sheet](assets/readme_images/cheat_floor_plan.png)
+    ![Screenshot of floor plan typical cheat sheet](assets/readme_images/cheat_floor_plan.png)
 
 * Input validation and error checking
     * there is two validation script one for validating the room number on the dungeon rooms list and one for validating input once entered a room.
@@ -89,7 +89,7 @@ The dragons are randomly generated in the rooms North, South, East, West, Center
 
 you need a long sword to kill a big dragon and a sword to kill a little dragon
 there is 3 powerups for swords in the level a sword and a long sword
-There is 3 powerups for shields a little shield ad a big shield
+There is 3 powerups for shields a little shield and a big shield
 there is 3 health powerups.
 
 if you attack a big dragon with a basic sword you are killed

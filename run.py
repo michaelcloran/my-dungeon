@@ -1,4 +1,5 @@
 import random
+import sys
 # PP3 project by Michael Cloran
 # 1/2/2024
 # This is a basic single user Dungeon game
@@ -619,7 +620,7 @@ def validate_enter_dungeon_choice_data(value):
         if not (val >= 1 and val <= 13):
             raise ValueError(f"You must enter an Integer value 1 to 13 you entered {val}")
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print("Invalid choice: You must enter a Number between 1 and 13, please try again.\n")
         return False
 
     return True
@@ -637,16 +638,55 @@ def validate_enter_room_choice_data(value):
         if not (val >= 1 and val <= 5):
             raise ValueError(f"You must enter an Integer value 1 to 5 you entered {val}")
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print("Invalid choice:You must enter a number between 1 and 5, please try again.\n")
+        return False
+
+    return True      
+
+def validate_intro_choice_data(value):
+    """
+    
+    """
+
+    try:
+        val = int(value)
+        if not (val >= 1 and val <= 2):
+            raise ValueError("Invalid choice: You mush enter a Number either 1 or 2!, please try again.\n")
+    except ValueError as e:
+        print("Invalid choice: You mush enter a Number either 1 or 2! a, please try again.\n")
         return False
 
     return True      
 
 
+def display_intro():
+
+    print("Welcome to my Dungeon")
+    print("You have entered an era of dragons")
+    print("")
+    print("To play the game use the numbers on the menu of items and when asked for a choice enter one")
+    print("and press enter")
+    print("The goal of this game is to kill all the dragons in the least amount of time")
+    print("HINT: You need a sword and a shield to kill a dragon or youll be toast!")
+    print("\n\n\n")
+    print("1. play Game \t 2. Exit Game")
+    print("\n\n\n")
+    print("To play the game choose 1 or 2 to exit")
+
+def get_intro_input():
+
+    data_str = input("Enter option:")
+
+    if validate_intro_choice_data(data_str):
+        if int(data_str) == 2:
+            sys.exit()
+        main()
+    else:
+        get_intro_input()
+
 def main():
     dungeon = Dungeon(12)
 
-    
     global player_weapons_list
     player_weapons_list = []
     global playGame
@@ -671,6 +711,7 @@ def main():
     
     dungeon.enter_dungeon_choice()
 
+display_intro()
+get_intro_input()
 
-print("Welcome to my Dungeon")
-main()
+# main()
