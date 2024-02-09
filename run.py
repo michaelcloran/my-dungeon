@@ -574,13 +574,14 @@ class Dungeon:
             self.remove_entity(room_number, direction)
 
         else:
-            self.player_health <= 0
+            self.player_health = 0
             print("-"*40)
             print("Game Over the player was killed by Dragon")
             endTime = time.time()
             durationOfGame = endTime - self.startTime
             durationOfGame = format(durationOfGame, ".2f")
             print(f"You lasted:{durationOfGame}")
+            print("Play Again?")
             print("-"*40)
             display_intro()
             get_intro_input()
@@ -592,6 +593,7 @@ class Dungeon:
             durationOfGame = endTime - self.startTime
             durationOfGame = format(durationOfGame, ".2f")
             print(f"You lasted:{durationOfGame}")
+            print("Play Again?")
             print("-"*40)
             display_intro()
             get_intro_input()
