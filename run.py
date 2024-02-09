@@ -444,54 +444,16 @@ class Dungeon:
             data_str = input("Choose an option:\n")
             while not (validate_enter_room_choice_data(data_str)):
                 data_str = input("Choose an option:\n")
-                if validate_enter_room_choice_data(data_str):
-                    # enter room and display options
-                    if int(data_str) == 5:  # Exit Room
-                        data_str = 5
-                        break
-
-                    print("tp11:"+data_str)
+                
+                if (data_str) == 5:  # Exit Room
+                    data_str = 5
+                    break  # break out of inner while loop
 
             if int(data_str) == 5:  # Exit Room
                 print("Exit room")
-                break      
+                break  # break out of outer while loop
+
             self.move_forward(int(data_str), room_number)
-
-            """
-            return_val = self.get_enter_room_choice(room_number)
-            print("tp:"+str(return_val))
-            while return_val is None:
-                return_val = self.get_enter_room_choice(room_number)
-
-            print("tp1:"+str(return_val))
-
-            if return_val == 5:
-                break
-
-            data_str = return_val
-            self.move_forward(int(return_val), room_number)
-            """
-
-    def get_enter_room_choice(self, room_number):
-        """
-        This function gets the room choice menu option
-        and validates it and moves the player if requested
-        if its not a valid choice the function is called again
-        """
-
-        dat_str = input("Choose an option:\n")
-        if validate_enter_room_choice_data(dat_str):
-            # enter room and display options
-            if int(dat_str) == 5:  # Exit Room
-                return 5
-
-            print("tp11:"+dat_str)
-            return dat_str
-            # self.move_forward(int(data_str), room_number)
-                    
-        
-        self.get_enter_room_choice(room_number)
-        
 
     def move_forward(self, option, room_number):
         """
