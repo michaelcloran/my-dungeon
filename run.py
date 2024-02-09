@@ -756,13 +756,7 @@ def get_intro_input():
 def main():
     dungeon = Dungeon(12)
 
-    # global player_weapons_list
-    # player_weapons_list = []
-    
-
-    """
-    display an empty Dungeon
-    """
+    # display an empty Dungeon
     dungeon.show_dungeon_plan()
 
     # d is a small dragon a D is a big dragon
