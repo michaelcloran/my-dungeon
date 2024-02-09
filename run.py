@@ -5,6 +5,9 @@ import time
 # 1/2/2024
 # This is a basic single user Dungeon game
 
+#  Globals
+player_weapons_list = []
+
 
 class Room:
     """The Room class is to create and manage the Room
@@ -151,7 +154,7 @@ class Dungeon:
         print(strMainWall)
         for x in range(6):  # number of rooms over 2
             for i in range(5):
-                if i == 2:
+                if i == 2:  # middle row
                     if x == 0:
 
                         print(str2 + spce*5 + str3 + "1" +spce*3+ "2" +str3 + spce*5 + str2)
@@ -478,7 +481,7 @@ class Dungeon:
                 if self.roomObjList[(room_number-1)].west == "d" or self.roomObjList[(room_number-1)].west == "D":
                     self.attack_dragon(room_number, "west")
                 else:
-                    self.pickup_entity(room_number, "west")     
+                    self.pickup_entity(room_number, "west")   
         elif option == 4:  # center  
             if self.roomObjList[(room_number-1)].center != Room.center:
                 if self.roomObjList[(room_number-1)].center == "d" or self.roomObjList[(room_number-1)].center == "D":
@@ -602,7 +605,7 @@ class Dungeon:
             print("-"*40)
             print("Game Over you killed all the Dragons")
             endTime = time.time()
-            durationOfGame = endTime - self.startTime 
+            durationOfGame = endTime - self.startTime
             print(f"You took {durationOfGame} to play the game. Well done!!")
             print("Play Again?")
             print("-"*40)
@@ -700,7 +703,7 @@ def validate_enter_room_choice_data(value):
         print("Invalid choice:You must enter a number between 1 and 5, please try again.\n")
         return False
 
-    return True      
+    return True   
 
 def validate_intro_choice_data(value):
     """
@@ -753,10 +756,9 @@ def get_intro_input():
 def main():
     dungeon = Dungeon(12)
 
-    global player_weapons_list
-    player_weapons_list = []
-    global playGame
-    playGame = True
+    # global player_weapons_list
+    # player_weapons_list = []
+    
 
     """
     display an empty Dungeon
