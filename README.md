@@ -57,7 +57,10 @@ in the menu list and pressing enter.
 * Random level generation 
     * The game level is generated then a script to choose a random room and random position with random entity from the listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms combined to select a random entity from this list and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the list created by appending lists listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms so 
     that entity of the 18 is used up and this algorithm continues till there is no more entities.
-    * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons.
+    * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons. A typical cheat sheet 
+    is shown below.
+    
+    ![Screenshot of flow typical cheat sheet](assets/readme_images/cheat_floor_plan.png)
 
 * Input validation and error checking
     * there is two validation script one for validating the room number on the dungeon rooms list and one for validating input once entered a room.
