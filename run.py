@@ -82,6 +82,7 @@ class Dungeon:
         self.create_rooms(number_of_rooms)
         self.listOfEntitiesInRooms = []
         self.player_health = 100
+        self.numberOfDragons = 9
 
     def add_objects_to_rooms(self, listOfDragonsInRooms, listOfWeaponssInRooms, listOfMediPacksInRooms):
         """
@@ -545,6 +546,7 @@ class Dungeon:
             self.player_health = self.player_health - 50
             if self.player_health > 0:
                 print(f"Dragon slayed you have {self.player_health} health")
+                self.numberOfDragons = self.numberOfDragons - 1
             else:
                 print("Player killed by Dragon") 
             
@@ -554,6 +556,7 @@ class Dungeon:
             self.player_health = self.player_health - 25
             if self.player_health > 0:
                 print(f"Dragon slayed you have {self.player_health} health")
+                self.numberOfDragons = self.numberOfDragons - 1
             else:
                 print("Player killed by Dragon") 
             self.remove_entity(room_number, direction)
@@ -562,6 +565,7 @@ class Dungeon:
             self.player_health = self.player_health - 15
             if self.player_health > 0:
                 print(f"Dragon slayed you have {self.player_health} health")
+                self.numberOfDragons = self.numberOfDragons - 1
             else:
                 print("Player killed by Dragon") 
 
@@ -570,12 +574,18 @@ class Dungeon:
         elif "S" in player_weapons_list and "W" in player_weapons_list:
             
             print(f"Dragon slayed you have {self.player_health} health")
+            self.numberOfDragons = self.numberOfDragons - 1
 
             self.remove_entity(room_number, direction)
 
-        else:
-            self.player_health = 0
+        
+        if self.player_health <= 0:
             print("Game Over the player was killed by Dragon")
+            display_intro()
+            get_intro_input()
+
+        if self.numberOfDragons == 0:
+            print("Game Over you killed all the Dragons")
             display_intro()
             get_intro_input()
 
@@ -697,8 +707,8 @@ def display_intro():
     print("Welcome to my Dungeon")
     print("You have entered an era of dragons")
     print("")
-    print("To play the game use the numbers on the menu of items and when asked for a choice enter one")
-    print("and press enter")
+    print("To play the game use the numbers on the menu of items and when asked for a")
+    print("choice enter one and press enter")
     print("The goal of this game is to kill all the dragons in the least amount of time")
     print("HINT: You need a sword and a shield to kill a dragon or youll be toast!")
     print("\n\n\n")
