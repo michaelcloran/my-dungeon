@@ -602,8 +602,8 @@ class Dungeon:
             print("-"*40)
             print("Game Over you killed all the Dragons")
             endTime = time.time()
-            durationOfGame = self.startTime - endTime
-            print("You took {durationOfGame} to play the game. Well done!!")
+            durationOfGame = endTime - self.startTime 
+            print(f"You took {durationOfGame} to play the game. Well done!!")
             print("-"*40)
             display_intro()
             get_intro_input()
