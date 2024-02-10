@@ -675,8 +675,6 @@ def validate_enter_dungeon_choice_data(value):
     also if the value is not an integer a message is displayed
     """
 
-    #fix
-
     try:
         val = int(value)
         if not (val >= 1 and val <= 13):
@@ -708,20 +706,20 @@ def validate_enter_room_choice_data(value):
 def validate_intro_choice_data(value):
     """
     This function validates the intro input data
-    if the value is not between 1 and 2 a error
+    if the value is not between 1 and 3 a error
     message is displayed and if the value is
     not a number an error message is displayed
     """
 
     try:
         val = int(value)
-        if not (val >= 1 and val <= 2):
+        if not (val >= 1 and val <= 3):
             raise ValueError()  
     except ValueError:
-        print("Invalid choice: You mush enter a Number either 1 or 2!, please try again.\n")
+        print("Invalid choice: You mush enter a Number either 1 or 3!, please try again.\n")
         return False
 
-    return True      
+    return True
 
 
 def display_intro():
@@ -737,21 +735,46 @@ def display_intro():
     print("The goal of this game is to kill all the dragons in the least amount of time")
     print("HINT: You need a sword and a shield to kill a dragon or you'll be toast!")
     print("\n\n\n")
-    print("1. play Game \t 2. Exit Game")
-    print("\n\n\n")
-    print("To play the game choose 1 or 2 to exit")
+    print("1. play Game \t 2. How To Play Game")
+    print("3. Exit Game")
+    print("\n\n")
+    print("To play the game choose 1 or 3 to exit")
 
 def get_intro_input():
 
     data_str = input("Enter option:\n")
 
     if validate_intro_choice_data(data_str):
-        if int(data_str) == 2:
+        if int(data_str) == 3:
             sys.exit()
-        main()
+        elif int(data_str) == 2:
+            display_howto_play_game()
+        else:
+            main()
     else:
         get_intro_input()
 
+def display_howto_play_game():
+    output_str = """
+    When the user enters the game they are given options via text based forms\n \
+    where the options are shown via a output to the console you choose a number\n \
+    type it and then press enter and the menu will take you to that option\n \
+    When you play the game a list of Rooms is shown where you have to\n \
+    chooose one via entering a number and pressing enter based on your choice\n \
+    you will be taken to a Room with a Number and in this Room you will\n \
+    have 5 options to go north or Pickup/Attack an entity. To go east\n \
+    to pickup/Attack an entity. To go west and Pickup/Attack an entity.\n \
+    To go to center of Room and Pickup/Attack an entity. And lasly\n \
+    an option to go south and exit the Room. On each option there\n \
+    is a number and the player will choose the option by entering\n \
+    the number and pressing return.
+    """
+
+    print(output_str)
+
+    input("Press Enter to continue:\n")
+    display_intro()
+    get_intro_input()
 
 def main():
     dungeon = Dungeon(12)
