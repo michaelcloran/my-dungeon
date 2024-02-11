@@ -16,7 +16,7 @@ player_weapons_list = []
 class Room:
     """The Room class is used to create and manage the Room
     Note when you walk into a room you are at the door
-    and the door is south the far wall is north and to 
+    and the door is south the far wall is north and to
     the left and right west and east
     """
 
@@ -34,10 +34,10 @@ class Room:
 
 
 class Dungeon:
-    """ 
+    """
     The Dungeon class is to create and manage the dungeon
     """
-    
+
     def create_rooms(self, number_of_rooms):
         """
         creates the rooms and stores a room object in the room_obj_lst
@@ -55,21 +55,21 @@ class Dungeon:
         """
         Get a random room and random position (north, east, west, center)
         It tests for possible collisions where a position is already taken
-        and thus does a recursive call to another random room and random 
+        and thus does a recursive call to another random room and random
         position
         """
 
         random_room_val = random.randint(0, (11))  # 12 rooms
-        
+
         # 1 north, 2 east, 3 west, 4 center remember south is a door
-        random_pos = random.randint(1, 4) 
-        
+        random_pos = random.randint(1, 4)
+
         if random_pos == 1:  # north
             if self.room_obj_lst[random_room_val].north != Room.wall:
                 self.get_random_position_in_random_room()
             else:
                 return [random_room_val, random_pos]
-                
+
         elif random_pos == 2:  # east
             if self.room_obj_lst[random_room_val].east != Room.wall:
                 self.get_random_position_in_random_room()
@@ -109,10 +109,10 @@ class Dungeon:
         , listof_medipacks_inrooms
         ):
         """
-        Goes through a for look to loop 18 times which is the amount of 
+        Goes through a for look to loop 18 times which is the amount of
         entities to be added to the game level
         firstly get_random_position_in_random_room is called to get random
-        room and random position the a random entity is got and based on 
+        room and random position the a random entity is got and based on
         the random position and random room the entity is added
         to the random room at random position
 
@@ -122,7 +122,7 @@ class Dungeon:
             listof_medipacks_inrooms a list containing medipacks
         """
 
-        # remember only 18 entities for this simulation so 
+        # remember only 18 entities for this simulation so
         # get_random_position_in_randon_room will be called 18 times
         numberof_entities = len(listof_dragons_inrooms) \
                 +len(listof_weapons_inrooms)+len(listof_medipacks_inrooms)
@@ -134,7 +134,7 @@ class Dungeon:
 
             random_room_val = random_vals[0]  # ramdom room number
             random_pos = random_vals[1]  # random position N,E,W,C (int)
-            
+
             random_entity = self.get_random_entity(listof_dragons_inrooms \
                 ,listof_weapons_inrooms, listof_medipacks_inrooms)
 
@@ -147,9 +147,9 @@ class Dungeon:
             elif random_pos == 4:  # center
                 self.room_obj_lst[random_room_val].center = random_entity
 
-    def get_random_entity(self, 
-         listof_dragons_inrooms, 
-         listof_weapons_inrooms, 
+    def get_random_entity(self,
+         listof_dragons_inrooms,
+         listof_weapons_inrooms,
          listof_medipacks_inrooms
          ):
         """
@@ -168,12 +168,12 @@ class Dungeon:
         if len(self.listof_entities_inrooms) == 0:
             self.listof_entities_inrooms = listof_dragons_inrooms \
                 + listof_weapons_inrooms+ listof_medipacks_inrooms
-        
+
         random_int = random.randint(0, (len(self.listof_entities_inrooms)-1))
         strto_ret = self.listof_entities_inrooms[random_int]
 
         del self.listof_entities_inrooms[random_int]
-        
+
         return strto_ret
 
     def show_dungeon_plan(self):
@@ -210,7 +210,7 @@ class Dungeon:
                     elif x == 5:  # room 11 and 12
 
                         print(str2 + spce*5 + str3 + "11" +spce*1+ "12" +str3 + spce*5 + str2)
-                    
+
                 else:
                     print(str2 + spce*5+ str2 + spce*5 + str2 +spce*5 + str2)
 
@@ -226,7 +226,7 @@ class Dungeon:
             The ! is a door and d little dragon and D big Dragon\n \
             s for little shield and S for big shield\n \
             w for little sword and W for big sword\n \
-            H for medi pack\n") 
+            H for medi pack\n")
 
         print("Dungeon Plan")
         str1 = '-'
@@ -237,7 +237,7 @@ class Dungeon:
 
         for x in range(6):  # number of rooms over 2
             for i in range(5):
-                
+
                 if i == 0:  # top
                     if x == 0:  # room 1 and 2
                         print(self.get_floor_plan_edges_string(0, 1, "east"))
@@ -265,7 +265,7 @@ class Dungeon:
                         print(self.get_floor_plan_middle_string(8, 9))
                     elif x == 5:  # room 11 and 12 middle on door
                         print(self.get_floor_plan_middle_string(10, 11))
-                    
+
                 elif i == 4:  # bottom
                     if x == 0:  # room 1 and 2
                         print(self.get_floor_plan_edges_string(0, 1, "west"))
@@ -281,7 +281,7 @@ class Dungeon:
                         print(self.get_floor_plan_edges_string(10, 11, "west"))
                 else:
                     print(str2 + spce*5+ str2 + spce*5 + str2 +spce*5 + str2)
-            
+
             print(str_main_wall)
 
     def get_floor_plan_edges_string(self, room_indx1, room_indx2, direction):
@@ -306,36 +306,36 @@ class Dungeon:
                 floor_plan_str = floor_plan_str + str2 + spce*2 \
                     + self.room_obj_lst[room_indx1].east + spce*2 + str2
             else:
-                floor_plan_str = floor_plan_str + str2 + spce*5 + str2  
-                
-            # put in corridore 
+                floor_plan_str = floor_plan_str + str2 + spce*5 + str2
+
+            # put in corridore
             floor_plan_str = floor_plan_str + spce*5
 
             # room2
             if self.room_obj_lst[room_indx2].west != 1:
                 floor_plan_str = floor_plan_str + str2 + spce*2 \
-                    + self.room_obj_lst[room_indx2].west + spce*2 + str2 
+                    + self.room_obj_lst[room_indx2].west + spce*2 + str2
             else:
                 floor_plan_str = floor_plan_str + str2 + spce*5 + str2
-        
+
         elif direction == "west":
             # room1
             if self.room_obj_lst[room_indx1].west != 1:
                 floor_plan_str = floor_plan_str + str2 + spce*2 \
                     + self.room_obj_lst[room_indx1].west + spce*2 + str2
             else:
-                floor_plan_str = floor_plan_str + str2 + spce*5 + str2 
-                
-            # put in corridore 
+                floor_plan_str = floor_plan_str + str2 + spce*5 + str2
+
+            # put in corridore
             floor_plan_str = floor_plan_str + spce*5
 
             # room2
             if self.room_obj_lst[room_indx2].east != 1:
                 floor_plan_str = floor_plan_str + str2 + spce*2 \
-                + self.room_obj_lst[room_indx2].east + spce*2 + str2 
+                + self.room_obj_lst[room_indx2].east + spce*2 + str2
             else:
                 floor_plan_str = floor_plan_str + str2 + spce*5 + str2
-        
+
         return floor_plan_str
 
     def get_floor_plan_middle_string(self, room_indx1, room_indx2):
@@ -359,15 +359,15 @@ class Dungeon:
         if self.room_obj_lst[room_indx1].north != 1:
             floor_plan_str = floor_plan_str + str2 + self.room_obj_lst[room_indx1].north
         else:
-            floor_plan_str = floor_plan_str + str2 +spce  
-                            
+            floor_plan_str = floor_plan_str + str2 +spce
+
         if self.room_obj_lst[room_indx1].center != 2:
             floor_plan_str = floor_plan_str + spce*2+ self.room_obj_lst[room_indx1].center \
                 + spce + str3 + str(room_indx1+1)
         else:
             floor_plan_str = floor_plan_str + spce*4 + str3 + str(room_indx1+1)
 
-        # put in corridore 
+        # put in corridore
         if room_indx2 != 9 and room_indx2 != 11 and room_indx2 != 10:
             floor_plan_str = floor_plan_str + spce*3
         elif room_indx2 == 11:
@@ -379,7 +379,7 @@ class Dungeon:
         if self.room_obj_lst[room_indx2].center != 2:
             floor_plan_str = floor_plan_str + str(room_indx2+1) + str3 + spce*2 \
                 + self.room_obj_lst[room_indx2].center
-            
+
         else:
             floor_plan_str = floor_plan_str + str(room_indx2+1) + str3 + spce*3
 
@@ -387,13 +387,13 @@ class Dungeon:
             floor_plan_str = floor_plan_str + spce + self.room_obj_lst[room_indx2].north + str2
         else:
             floor_plan_str = floor_plan_str + spce*2 + str2
-            
-        return floor_plan_str        
+
+        return floor_plan_str
 
     def enter_dungeon_choice(self):
         """
-        This function displays the dungeon room menu 
-        asking to go to a room and validates the input 
+        This function displays the dungeon room menu
+        asking to go to a room and validates the input
         if you enter option 13 the game is ended
         """
 
@@ -423,7 +423,7 @@ class Dungeon:
 
     def get_enter_dungeon_choice_menu(self):
         """
-        This function gets the user input and validates it 
+        This function gets the user input and validates it
         if the user enter 13 the game is ended. If the
         player health <= 0 the game is over
         """
@@ -443,7 +443,7 @@ class Dungeon:
     def enter_room_choice(self, room_number):
         """
         This function displays the options within a room
-        There is 3 options to be displayed for each direction 
+        There is 3 options to be displayed for each direction
         either Attack if there is a dragon to that direction
         or pickup an entity if there is an entity in that direction
         or to just goto that direction
@@ -467,7 +467,7 @@ class Dungeon:
             if len(message) > 3:
                 message = message[:-1]
             print(message+"]")
-            
+
             print("* Choose an option")
             print("*")
             print("*"*40)
@@ -475,7 +475,7 @@ class Dungeon:
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
                 if self.room_obj_lst[(room_number-1)].north == "d" \
                     or self.room_obj_lst[(room_number-1)].north == "D":
-                        
+
                     print("1. Attack "\
                         +f"{self.parse_entity_string(self.room_obj_lst[(room_number-1)].north)}"\
                         +" to the north")
@@ -489,7 +489,7 @@ class Dungeon:
             if self.room_obj_lst[(room_number-1)].east != Room.wall:
                 if self.room_obj_lst[(room_number-1)].east == "d" \
                     or self.room_obj_lst[(room_number-1)].east == "D":
-                        
+
                     print("2. Attack "\
                         +f"{self.parse_entity_string(self.room_obj_lst[(room_number-1)].east)}" \
                         +" to the east")
@@ -499,11 +499,11 @@ class Dungeon:
                         +" to the east")
             else:
                 print("2. go east")
-           
+
             if self.room_obj_lst[(room_number-1)].west != Room.wall:
                 if self.room_obj_lst[(room_number-1)].west == "d" \
                     or self.room_obj_lst[(room_number-1)].west == "D":
-                        
+
                     print("3. Attack "\
                         +f"{self.parse_entity_string(self.room_obj_lst[(room_number-1)].west)}" \
                         +" to the west")
@@ -517,7 +517,7 @@ class Dungeon:
             if self.room_obj_lst[(room_number-1)].center != Room.center:
                 if self.room_obj_lst[(room_number-1)].center == "d" \
                     or self.room_obj_lst[(room_number-1)].center == "D":
-                        
+
                     print("4. Attack "\
                         +f"{self.parse_entity_string(self.room_obj_lst[(room_number-1)].center)}" \
                         +" to the center")
@@ -527,13 +527,13 @@ class Dungeon:
                         +" to the center")
             else:
                 print("4. go center of the room")
-            
+
             print("5. go south and exit room")
 
             data_str = input("Choose an option:\n")
             while not (validate_enter_room_choice_data(data_str)):
                 data_str = input("Choose an option:\n")
-                
+
                 if (data_str) == 5:  # Exit Room
                     data_str = 5
                     break  # break out of inner while loop
@@ -546,7 +546,7 @@ class Dungeon:
 
     def move_forward(self, option, room_number):
         """
-        This function moves the player to the north, south, east or west if there is a 
+        This function moves the player to the north, south, east or west if there is a
         dragon it does and attack_dragon function
         if there is a power up that that is picked up via the pickup_entity function
 
@@ -559,34 +559,34 @@ class Dungeon:
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
                 if self.room_obj_lst[(room_number-1)].north == "d" \
                     or self.room_obj_lst[(room_number-1)].north == "D":
-                        
-                    self.attack_dragon(room_number, "north") 
+
+                    self.attack_dragon(room_number, "north")
                 else:
-                    self.pickup_entity(room_number, "north")    
+                    self.pickup_entity(room_number, "north")
         elif option == 2:  # east
             if self.room_obj_lst[(room_number-1)].east != Room.wall:
                 if self.room_obj_lst[(room_number-1)].east == "d" \
                     or self.room_obj_lst[(room_number-1)].east == "D":
-                        
+
                     self.attack_dragon(room_number, "east")
                 else:
-                    self.pickup_entity(room_number, "east")      
+                    self.pickup_entity(room_number, "east")
         elif option == 3:  # west
             if self.room_obj_lst[(room_number-1)].west != Room.wall:
                 if self.room_obj_lst[(room_number-1)].west == "d" \
                     or self.room_obj_lst[(room_number-1)].west == "D":
-                        
+
                     self.attack_dragon(room_number, "west")
                 else:
-                    self.pickup_entity(room_number, "west")   
-        elif option == 4:  # center  
+                    self.pickup_entity(room_number, "west")
+        elif option == 4:  # center
             if self.room_obj_lst[(room_number-1)].center != Room.center:
                 if self.room_obj_lst[(room_number-1)].center == "d" \
                     or self.room_obj_lst[(room_number-1)].center == "D":
-                        
+
                     self.attack_dragon(room_number, "center")
                 else:
-                    self.pickup_entity(room_number, "center")  
+                    self.pickup_entity(room_number, "center")
 
     def pickup_entity(self, room_number, direction):
         """
@@ -609,7 +609,7 @@ class Dungeon:
             self.remove_entity(room_number, direction)
         elif direction == "east":
             if self.room_obj_lst[(room_number-1)].east == "H":
-                
+
                 self.player_health = 100
             else:
                 player_weapons_list.append(self.room_obj_lst[(room_number-1)].east)
@@ -645,11 +645,11 @@ class Dungeon:
         Args:
             room_number (int)
             direction (string) north, east, west,center
-            
+
         """
 
         if "S" in player_weapons_list and "W" in player_weapons_list:
-            
+
             print(f"Dragon slayed you have {self.player_health} health")
             self.numberof_dragons = self.numberof_dragons - 1
 
@@ -661,7 +661,7 @@ class Dungeon:
                 print(f"Dragon slayed you have {self.player_health} health")
                 self.numberof_dragons = self.numberof_dragons - 1
             else:
-                print("Player killed by Dragon") 
+                print("Player killed by Dragon")
 
             self.remove_entity(room_number, direction)
 
@@ -671,7 +671,7 @@ class Dungeon:
                 print(f"Dragon slayed you have {self.player_health} health")
                 self.numberof_dragons = self.numberof_dragons - 1
             else:
-                print("Player killed by Dragon") 
+                print("Player killed by Dragon")
             self.remove_entity(room_number, direction)
 
         elif "s" in player_weapons_list and "w" in player_weapons_list:
@@ -680,8 +680,8 @@ class Dungeon:
                 print(f"Dragon slayed you have {self.player_health} health")
                 self.numberof_dragons = self.numberof_dragons - 1
             else:
-                print("Player killed by Dragon") 
-            
+                print("Player killed by Dragon")
+
             self.remove_entity(room_number, direction)
         else:
             self.player_health = 0
@@ -695,7 +695,7 @@ class Dungeon:
             print("-"*40)
             display_intro()
             get_intro_input()
-        
+
         if self.player_health <= 0:
             print("-"*40)
             print("Game Over the player was killed by Dragon")
@@ -724,7 +724,7 @@ class Dungeon:
         """
         This function sets the directions to room.wall and if
         the direction is center it is set to room.center
-        
+
         Args:
             room_number (int)
             direction (string) north, east, west, center
@@ -741,8 +741,8 @@ class Dungeon:
 
     def show_entities_in_room(self, room_number):
         """
-        This function detects if the room is empty and prints a room empty 
-        message it also shows a message showing the entities in the room 
+        This function detects if the room is empty and prints a room empty
+        message it also shows a message showing the entities in the room
         based on direction
 
         Args:
@@ -753,7 +753,7 @@ class Dungeon:
             and self.room_obj_lst[(room_number-1)].east == Room.wall \
             and self.room_obj_lst[(room_number-1)].west == Room.wall \
             and self.room_obj_lst[(room_number-1)].center == Room.center:
-                
+
             print("* Room is empty")
         else:
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
@@ -771,7 +771,7 @@ class Dungeon:
 
     def parse_entity_string(self, entity_string):
         """
-        This function parses an entity string and returns a description 
+        This function parses an entity string and returns a description
         string in english
 
         Args:
@@ -798,7 +798,7 @@ class Dungeon:
 def validate_enter_dungeon_choice_data(value):
     """
     This function validates the user input for the dungeon room choice dialog
-    if the value chosen is not between 1 and 13 then a message is displayed 
+    if the value chosen is not between 1 and 13 then a message is displayed
     also if the value is not an integer a message is displayed
 
     Args:
@@ -811,7 +811,7 @@ def validate_enter_dungeon_choice_data(value):
     try:
         val = int(value)
         if not (val >= 1 and val <= 13):
-            raise ValueError()  
+            raise ValueError()
     except ValueError:
         print("Invalid choice: You must enter a Number between 1 and 13, please try again.\n")
         return False
@@ -835,12 +835,12 @@ def validate_enter_room_choice_data(value):
     try:
         val = int(value)
         if not (val >= 1 and val <= 5):
-            raise ValueError()  
+            raise ValueError()
     except ValueError:
         print("Invalid choice:You must enter a number between 1 and 5, please try again.\n")
         return False
 
-    return True   
+    return True
 
 def validate_intro_choice_data(value):
     """
@@ -859,7 +859,7 @@ def validate_intro_choice_data(value):
     try:
         val = int(value)
         if not (val >= 1 and val <= 3):
-            raise ValueError()  
+            raise ValueError()
     except ValueError:
         print("Invalid choice: You mush enter a Number either 1 or 3!, please try again.\n")
         return False
@@ -949,10 +949,10 @@ def main():
     listof_medipacks_inrooms = ["H", "H", "H"]
 
     dungeon.add_objects_to_rooms(listof_dragons_inrooms, \
-         listof_weapons_inrooms, listof_medipacks_inrooms)         
+         listof_weapons_inrooms, listof_medipacks_inrooms)
 
     dungeon.show_dungeon_plan_with_entities()
-    
+
     dungeon.enter_dungeon_choice()
 
 
