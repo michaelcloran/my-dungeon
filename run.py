@@ -14,7 +14,7 @@ player_weapons_list = []
 
 
 class Room:
-    """The Room class is to create and manage the Room
+    """The Room class is used to create and manage the Room
     Note when you walk into a room you are at the door
     and the door is south the far wall is north and to 
     the left and right west and east
@@ -53,7 +53,7 @@ class Dungeon:
 
     def get_random_position_in_random_room(self):
         """
-        get a random room and random position (north, east, west, center)
+        Get a random room and random position (north, east, west, center)
         It tests for possible collisions where a position is already taken
         and thus does a recursive call to another random room and random 
         position
@@ -117,7 +117,9 @@ class Dungeon:
         to the random room at random position
 
         Args:
-            
+            listof_dragons_inrooms a list containing the dragons
+            listof_weapons_inrooms a list containing the weapons
+            listof_medipacks_inrooms a list containing medipacks
         """
 
         # remember only 18 entities for this simulation so 
@@ -130,8 +132,8 @@ class Dungeon:
             while random_vals is None:
                 random_vals = self.get_random_position_in_random_room()
 
-            random_room_val = random_vals[0]
-            random_pos = random_vals[1]
+            random_room_val = random_vals[0]  # ramdom room number
+            random_pos = random_vals[1]  # random position N,E,W,C
             
             random_entity = self.get_random_entity(listof_dragons_inrooms \
                 ,listof_weapons_inrooms, listof_medipacks_inrooms)
@@ -155,6 +157,11 @@ class Dungeon:
         to the game a random entity is picked from the list and that entity
         is removed from the listof_entities_inrooms the random entity is
         returned
+
+        Args:
+            listof_dragons_inrooms (list)
+            listof_weapons_inrooms (list)
+            listof_medipacks_inrooms (list)
         """
 
         # rememeber the dungeon only has 12 Rooms 18 entities
@@ -211,8 +218,8 @@ class Dungeon:
 
     def show_dungeon_plan_with_entities(self):
         """
-        Loops through floor plan and shows the entities for the game
-        level
+        Loops through floor plan and renders the entities for the game
+        level and floor plan
         """
 
         print("\nCheat Dungeon plan\n \
@@ -280,6 +287,14 @@ class Dungeon:
     def get_floor_plan_edges_string(self, room_indx1, room_indx2, direction):
         """
         This function gets the east and west wall and adds entities to it if needed
+
+        Args:
+            room_indx1 (int)
+            room_indx2 (int)
+            direction (string) E,W
+
+        return:
+            floor_plan_str
         """
 
         str2 = "|"
@@ -327,6 +342,13 @@ class Dungeon:
         """
         This function gets the floorplan for the lines dealing with doors
         and add room numbers
+
+        Args:
+            room_indx1 (int)
+            room_indx2 (int)
+
+        return:
+            floor_plan_str (string)
         """
 
         str2 = "|"
@@ -425,6 +447,9 @@ class Dungeon:
         either Attack if there is a dragon to that direction
         or pickup an entity if there is an entity in that direction
         or to just goto that direction
+
+        Args:
+            room_number (int)
         """
 
         data_str = 0
@@ -524,6 +549,10 @@ class Dungeon:
         This function moves the player to the north, south, east or west if there is a 
         dragon it does and attack_dragon function
         if there is a power up that that is picked up via the pickup_entity function
+
+        Args:
+            option (int) 1 to 4 N,E,W,C
+            room_number (int)
         """
 
         if option == 1:  # north
@@ -562,6 +591,10 @@ class Dungeon:
     def pickup_entity(self, room_number, direction):
         """
         This function pickups the weapons and health based on direction
+
+        Args:
+            room_number (int)
+            direction (int) N,E,W,C
         """
 
         if direction == "north":
@@ -608,6 +641,11 @@ class Dungeon:
         This function acks as a finite state machine a basic one to attack a
         dragon and based on the weapons the player has the health is adjusted
         based on rules in the finite state machine
+
+        Args:
+            room_number (int)
+            direction (string) north, east, west,center
+            
         """
 
         if "s" in player_weapons_list and "w" in player_weapons_list:
@@ -686,7 +724,12 @@ class Dungeon:
         """
         This function sets the directions to room.wall and if
         the direction is center it is set to room.center
+        
+        Args:
+            room_number (int)
+            direction (string) north, east, west, center
         """
+
         if direction == "north":
             self.room_obj_lst[(room_number-1)].north = Room.wall
         elif direction == "east":
@@ -701,6 +744,9 @@ class Dungeon:
         This function detects if the room is empty and prints a room empty 
         message it also shows a message showing the entities in the room 
         based on direction
+
+        Args:
+            room_number (int)
         """
 
         if self.room_obj_lst[(room_number-1)].north == Room.wall \
@@ -727,6 +773,9 @@ class Dungeon:
         """
         This function parses an entity string and returns a description 
         string in english
+
+        Args:
+            entity_string (string) a character to be translated to english
         """
 
         if entity_string.strip() == "d":
@@ -751,6 +800,12 @@ def validate_enter_dungeon_choice_data(value):
     This function validates the user input for the dungeon room choice dialog
     if the value chosen is not between 1 and 13 then a message is displayed 
     also if the value is not an integer a message is displayed
+
+    Args:
+        value (string)
+
+    return:
+         True if all goes well or False if there is exception thrown
     """
 
     try:
@@ -769,6 +824,12 @@ def validate_enter_room_choice_data(value):
     This function validates the options when in a room
     if the value is not between 1 and 5 a message is diplayed
     also if the value is not an integer a message is displayed
+
+    Args:
+        value (string)
+
+    return:
+        True if all goes well or False if there is exception thrown
     """
 
     try:
@@ -787,6 +848,12 @@ def validate_intro_choice_data(value):
     if the value is not between 1 and 3 a error
     message is displayed and if the value is
     not a number an error message is displayed
+
+    Args:
+        value (string)
+
+    return:
+        True if all goes well or False if there is exception thrown
     """
 
     try:
@@ -888,9 +955,9 @@ def main():
     
     dungeon.enter_dungeon_choice()
 
-"""
-These 2 functions display the introduction screen and get a choice
-the get_intro_input function can call main
-"""
+
+# These 2 functions display the introduction screen and get a choice
+# the get_intro_input function can call main
+
 display_intro()
 get_intro_input()
