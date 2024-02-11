@@ -655,25 +655,6 @@ class Dungeon:
 
             self.remove_entity(room_number, direction)
 
-        elif "s" in player_weapons_list and "w" in player_weapons_list:
-            self.player_health = self.player_health - 50
-            if self.player_health > 0:
-                print(f"Dragon slayed you have {self.player_health} health")
-                self.numberof_dragons = self.numberof_dragons - 1
-            else:
-                print("Player killed by Dragon") 
-            
-            self.remove_entity(room_number, direction)
-
-        elif "s" in player_weapons_list and "W" in player_weapons_list:
-            self.player_health = self.player_health - 25
-            if self.player_health > 0:
-                print(f"Dragon slayed you have {self.player_health} health")
-                self.numberof_dragons = self.numberof_dragons - 1
-            else:
-                print("Player killed by Dragon") 
-            self.remove_entity(room_number, direction)
-
         elif "S" in player_weapons_list and "w" in player_weapons_list:
             self.player_health = self.player_health - 15
             if self.player_health > 0:
@@ -683,7 +664,25 @@ class Dungeon:
                 print("Player killed by Dragon") 
 
             self.remove_entity(room_number, direction)
+            
+        elif "s" in player_weapons_list and "W" in player_weapons_list:
+            self.player_health = self.player_health - 25
+            if self.player_health > 0:
+                print(f"Dragon slayed you have {self.player_health} health")
+                self.numberof_dragons = self.numberof_dragons - 1
+            else:
+                print("Player killed by Dragon") 
+            self.remove_entity(room_number, direction)
 
+        elif "s" in player_weapons_list and "w" in player_weapons_list:
+                self.player_health = self.player_health - 50
+            if self.player_health > 0:
+                print(f"Dragon slayed you have {self.player_health} health")
+                self.numberof_dragons = self.numberof_dragons - 1
+            else:
+                print("Player killed by Dragon") 
+            
+            self.remove_entity(room_number, direction)
         else:
             self.player_health = 0
             print("-"*40)
