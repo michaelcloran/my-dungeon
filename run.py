@@ -1,9 +1,13 @@
-import random
-import sys
-import time
+"""
 # PP3 project by Michael Cloran
 # 1/2/2024
 # This is a basic single user Dungeon game
+# It was created for Code Institute project 3
+"""
+import random
+import sys
+import time
+
 
 #  Globals
 player_weapons_list = []
@@ -19,7 +23,7 @@ class Room:
     door = 0
     wall = 1
     center = 2
-    
+
     def __init__(self):
         self.north = Room.wall
         self.south = Room.door
@@ -27,7 +31,6 @@ class Room:
         self.west = Room.wall
         self.center = Room.center
         self.room_number = 0
-        
 
 
 class Dungeon:
@@ -325,7 +328,7 @@ class Dungeon:
         This function gets the floorplan for the lines dealing with doors
         and add room numbers
         """
-        
+
         str2 = "|"
         str3 = "!"
         spce = ' '
