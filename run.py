@@ -133,7 +133,7 @@ class Dungeon:
                 random_vals = self.get_random_position_in_random_room()
 
             random_room_val = random_vals[0]  # ramdom room number
-            random_pos = random_vals[1]  # random position N,E,W,C
+            random_pos = random_vals[1]  # random position N,E,W,C (int)
             
             random_entity = self.get_random_entity(listof_dragons_inrooms \
                 ,listof_weapons_inrooms, listof_medipacks_inrooms)
@@ -648,7 +648,14 @@ class Dungeon:
             
         """
 
-        if "s" in player_weapons_list and "w" in player_weapons_list:
+        if "S" in player_weapons_list and "W" in player_weapons_list:
+            
+            print(f"Dragon slayed you have {self.player_health} health")
+            self.numberof_dragons = self.numberof_dragons - 1
+
+            self.remove_entity(room_number, direction)
+
+        elif "s" in player_weapons_list and "w" in player_weapons_list:
             self.player_health = self.player_health - 50
             if self.player_health > 0:
                 print(f"Dragon slayed you have {self.player_health} health")
@@ -674,13 +681,6 @@ class Dungeon:
                 self.numberof_dragons = self.numberof_dragons - 1
             else:
                 print("Player killed by Dragon") 
-
-            self.remove_entity(room_number, direction)
-
-        elif "S" in player_weapons_list and "W" in player_weapons_list:
-            
-            print(f"Dragon slayed you have {self.player_health} health")
-            self.numberof_dragons = self.numberof_dragons - 1
 
             self.remove_entity(room_number, direction)
 
@@ -714,6 +714,7 @@ class Dungeon:
             print("Game Over you killed all the Dragons")
             end_time = time.time()
             durationof_game = end_time - self.start_time
+            durationof_game = format(durationof_game, ".2f")
             print(f"You took {durationof_game} to play the game. Well done!!")
             print("Play Again?")
             print("-"*40)
