@@ -531,7 +531,7 @@ class Dungeon:
             print("5. go south and exit room")
 
             data_str = input("Choose an option:\n")
-            while not (validate_enter_room_choice_data(data_str)):
+            while not validate_enter_room_choice_data(data_str):
                 data_str = input("Choose an option:\n")
 
                 if (data_str) == 5:  # Exit Room
