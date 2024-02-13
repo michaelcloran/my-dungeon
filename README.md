@@ -63,7 +63,12 @@ in the menu list and pressing enter.
 ## Future Features
     * I would have loved to make this game concept into an actual 2D game with a graphics library but that option was not feasible with Heroku.
 
+## Data Model
+I used 2 classes in this project Room and Dungeon. The Room class is used within the Dungeon class as there is a list of Room objects. 12 in this case.
 
+When the Dungeon class instance is instantiated the Dungeon constructor is called which call the create_rooms(number_of_rooms) method which creates the level then 3 lists are created in main to initialise the netities (listof_dragons_inrooms, listof_weapons_inrooms, listof_medipacks_inrooms) then these lists are passed to the dungeon object and the dungeon add_objects_to_rooms method where the level is populated with entities in random rooms at random positions and where the entities are randomly accessed. In this particular instance there is 18 entities 9 dragons, 3 shields ,3 swords and 3 medi packs
+
+![Screenshot of classes with methods](assets/readme_images/class_diagram.png)
 
 ## Wireframes/ Mockups and specification for the Game
 
