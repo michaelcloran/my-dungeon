@@ -104,8 +104,8 @@ class Dungeon:
         self.start_time = time.time()
 
     def add_objects_to_rooms(self, listof_dragons_inrooms,
-                            listof_weapons_inrooms,
-                            listof_medipacks_inrooms):
+                             listof_weapons_inrooms,
+                             listof_medipacks_inrooms):
         """
         Goes through a for look to loop 18 times which is the amount of
         entities to be added to the game level
@@ -123,7 +123,8 @@ class Dungeon:
         # remember only 18 entities for this simulation so
         # get_random_position_in_randon_room will be called 18 times
         numberof_entities = len(listof_dragons_inrooms) \
-                + len(listof_weapons_inrooms) + len(listof_medipacks_inrooms)
+            + len(listof_weapons_inrooms) \
+            + len(listof_medipacks_inrooms)
 
         for x in range(numberof_entities):
             random_vals = self.get_random_position_in_random_room()
@@ -134,7 +135,8 @@ class Dungeon:
             random_pos = random_vals[1]  # random position N,E,W,C (int)
 
             random_entity = self.get_random_entity(listof_dragons_inrooms,
-                listof_weapons_inrooms, listof_medipacks_inrooms)
+                                                   listof_weapons_inrooms,
+                                                   listof_medipacks_inrooms)
 
             if random_pos == 1:  # north
                 self.room_obj_lst[random_room_val].north = random_entity
@@ -146,10 +148,9 @@ class Dungeon:
                 self.room_obj_lst[random_room_val].center = random_entity
 
     def get_random_entity(self,
-         listof_dragons_inrooms,
-         listof_weapons_inrooms,
-         listof_medipacks_inrooms
-         ):
+                          listof_dragons_inrooms,
+                          listof_weapons_inrooms,
+                          listof_medipacks_inrooms):
         """
         The listof_entities_inrooms contains a list of entities to be added
         to the game a random entity is picked from the list and that entity
@@ -192,32 +193,32 @@ class Dungeon:
                 if i == 2:  # middle row need to add the door str3
                     if x == 0:  # room 1 and room 2
 
-                        print(str2 + spce * 5 + str3 + "1" + spce * 3 + "2"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "1" + spce * 3 + "2" +
+                              str3 + spce * 5 + str2)
                     elif x == 1:  # room 3 and 4
 
-                        print(str2 + spce * 5 + str3 + "3" + spce * 3 + "4"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "3" + spce * 3 + "4" +
+                              str3 + spce * 5 + str2)
                     elif x == 2:  # room 5 and 6
 
-                        print(str2 + spce * 5 + str3 + "5" + spce * 3 + "6"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "5" + spce * 3 + "6" +
+                              str3 + spce * 5 + str2)
                     elif x == 3:  # room 7 and 8
 
-                        print(str2 + spce * 5 + str3 + "7" + spce * 3 + "8"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "7" + spce * 3 + "8" +
+                              str3 + spce * 5 + str2)
                     elif x == 4:  # room 9 and 10
 
-                        print(str2 + spce * 5 + str3 + "9" + spce * 2 + "10"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "9" + spce * 2 + "10" +
+                              str3 + spce * 5 + str2)
                     elif x == 5:  # room 11 and 12
 
-                        print(str2 + spce * 5 + str3 + "11" + spce * 1 + "12"
-                            + str3 + spce * 5 + str2)
+                        print(str2 + spce * 5 + str3 + "11" + spce * 1 + "12" +
+                              str3 + spce * 5 + str2)
 
                 else:
-                    print(str2 + spce * 5 + str2 + spce * 5 + str2 + spce * 5
-                        + str2)
+                    print(str2 + spce * 5 + str2 + spce * 5 + str2 +
+                          spce * 5 + str2)
 
             print(str_main_wall)
 
@@ -227,11 +228,11 @@ class Dungeon:
         level and floor plan
         """
 
-        print("\nCheat Dungeon plan\n \
-            The ! is a door and d little dragon and D big Dragon\n \
-            s for little shield and S for big shield\n \
-            w for little sword and W for big sword\n \
-            H for medi pack\n")
+        print("\nCheat Dungeon plan\n" +
+              "The ! is a door and d little dragon and D big Dragon\n" +
+              "s for little shield and S for big shield\n" +
+              "w for little sword and W for big sword\n" +
+              "H for medi pack\n")
 
         print("Dungeon Plan")
         str1 = '-'
@@ -285,8 +286,8 @@ class Dungeon:
                     elif x == 5:  # room 11 and 12
                         print(self.get_floor_plan_edges_string(10, 11, "west"))
                 else:
-                    print(str2 + spce * 5 + str2 + spce * 5 + str2 + spce * 5
-                        + str2)
+                    print(str2 + spce * 5 + str2 + spce * 5 + str2 +
+                          spce * 5 + str2)
 
             print(str_main_wall)
 
@@ -338,8 +339,9 @@ class Dungeon:
 
             # room2
             if self.room_obj_lst[room_indx2].east != 1:
-                floor_plan_str = floor_plan_str + str2 + spce*2 \
-                + self.room_obj_lst[room_indx2].east + spce*2 + str2
+                floor_plan_str = floor_plan_str + str2 + spce*2 + \
+                                 self.room_obj_lst[room_indx2].east +  \
+                                 spce*2 + str2
             else:
                 floor_plan_str = floor_plan_str + str2 + spce*5 + str2
 
@@ -371,8 +373,8 @@ class Dungeon:
 
         if self.room_obj_lst[room_indx1].center != 2:
             floor_plan_str = floor_plan_str + spce * 2 +\
-                 self.room_obj_lst[room_indx1].center \
-                + spce + str3 + str(room_indx1 + 1)
+                 self.room_obj_lst[room_indx1].center +\
+                 spce + str3 + str(room_indx1 + 1)
         else:
             floor_plan_str = floor_plan_str + spce * 4 + str3 \
                 + str(room_indx1+1)
@@ -387,8 +389,8 @@ class Dungeon:
 
         # room2
         if self.room_obj_lst[room_indx2].center != 2:
-            floor_plan_str = floor_plan_str + str(room_indx2+1) + str3 \
-            + spce*2 + self.room_obj_lst[room_indx2].center
+            floor_plan_str = floor_plan_str + str(room_indx2+1) + str3 +\
+                             spce*2 + self.room_obj_lst[room_indx2].center
 
         else:
             floor_plan_str = floor_plan_str + str(room_indx2+1) + \
@@ -396,7 +398,8 @@ class Dungeon:
 
         if self.room_obj_lst[room_indx2].north != 1:
             floor_plan_str = floor_plan_str + spce + \
-            self.room_obj_lst[room_indx2].north + str2
+                            self.room_obj_lst[room_indx2].north + \
+                            str2
         else:
             floor_plan_str = floor_plan_str + spce*2 + str2
 
@@ -487,56 +490,56 @@ class Dungeon:
             n_str = self.room_obj_lst[(room_number-1)].north
 
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
-                if self.room_obj_lst[(room_number-1)].north == "d" \
-                or self.room_obj_lst[(room_number-1)].north == "D":
+                if self.room_obj_lst[(room_number-1)].north == "d" or\
+                   self.room_obj_lst[(room_number-1)].north == "D":
 
                     print(f"1. Attack {self.parse_entity_string({n_str})}"
-                        + " to the north")
+                          + " to the north")
                 else:
                     print(f"1. Pickup {self.parse_entity_string({n_str})}"
-                        + " to the north")
+                          + " to the north")
             else:
                 print("1. go north")
 
             e_str = self.room_obj_lst[(room_number-1)].east
 
             if self.room_obj_lst[(room_number-1)].east != Room.wall:
-                if self.room_obj_lst[(room_number-1)].east == "d" \
-                    or self.room_obj_lst[(room_number-1)].east == "D":
+                if self.room_obj_lst[(room_number-1)].east == "d" or\
+                   self.room_obj_lst[(room_number-1)].east == "D":
 
                     print(f"2. Attack {self.parse_entity_string({e_str})}"
-                        + " to the east")
+                          + " to the east")
                 else:
                     print(f"2. Pickup {self.parse_entity_string({e_str})}"
-                        + " to the east")
+                          + " to the east")
             else:
                 print("2. go east")
 
             w_str = self.room_obj_lst[(room_number-1)].west
 
             if self.room_obj_lst[(room_number-1)].west != Room.wall:
-                if self.room_obj_lst[(room_number-1)].west == "d" \
-                    or self.room_obj_lst[(room_number-1)].west == "D":
+                if self.room_obj_lst[(room_number-1)].west == "d" or \
+                   self.room_obj_lst[(room_number-1)].west == "D":
 
                     print(f"3. Attack {self.parse_entity_string({w_str})}"
-                        + " to the west")
+                          + " to the west")
                 else:
                     print(f"3. Pickup {self.parse_entity_string({w_str})}"
-                        + " to the west")
+                          + " to the west")
             else:
                 print("3. go west")
 
             c_str = self.room_obj_lst[(room_number-1)].center
 
             if self.room_obj_lst[(room_number-1)].center != Room.center:
-                if self.room_obj_lst[(room_number-1)].center == "d" \
-                    or self.room_obj_lst[(room_number-1)].center == "D":
+                if self.room_obj_lst[(room_number-1)].center == "d" or \
+                   self.room_obj_lst[(room_number-1)].center == "D":
 
                     print(f"4. Attack {self.parse_entity_string({c_str})}"
-                        + " to the center")
+                          + " to the center")
                 else:
                     print(f"4. Pickup {self.parse_entity_string({c_str})}"
-                        + " to the center")
+                          + " to the center")
             else:
                 print("4. go center of the room")
 
@@ -571,32 +574,32 @@ class Dungeon:
 
         if option == 1:  # north
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
-                if self.room_obj_lst[(room_number-1)].north == "d" \
-                or self.room_obj_lst[(room_number-1)].north == "D":
+                if self.room_obj_lst[(room_number-1)].north == "d" or\
+                   self.room_obj_lst[(room_number-1)].north == "D":
 
                     self.attack_dragon(room_number, "north")
                 else:
                     self.pickup_entity(room_number, "north")
         elif option == 2:  # east
             if self.room_obj_lst[(room_number-1)].east != Room.wall:
-                if self.room_obj_lst[(room_number-1)].east == "d" \
-                or self.room_obj_lst[(room_number-1)].east == "D":
+                if self.room_obj_lst[(room_number-1)].east == "d" or\
+                   self.room_obj_lst[(room_number-1)].east == "D":
 
                     self.attack_dragon(room_number, "east")
                 else:
                     self.pickup_entity(room_number, "east")
         elif option == 3:  # west
             if self.room_obj_lst[(room_number-1)].west != Room.wall:
-                if self.room_obj_lst[(room_number-1)].west == "d" \
-                or self.room_obj_lst[(room_number-1)].west == "D":
+                if self.room_obj_lst[(room_number-1)].west == "d" or\
+                   self.room_obj_lst[(room_number-1)].west == "D":
 
                     self.attack_dragon(room_number, "west")
                 else:
                     self.pickup_entity(room_number, "west")
         elif option == 4:  # center
             if self.room_obj_lst[(room_number-1)].center != Room.center:
-                if self.room_obj_lst[(room_number-1)].center == "d" \
-                or self.room_obj_lst[(room_number-1)].center == "D":
+                if self.room_obj_lst[(room_number-1)].center == "d" or\
+                   self.room_obj_lst[(room_number-1)].center == "D":
 
                     self.attack_dragon(room_number, "center")
                 else:
@@ -768,28 +771,28 @@ class Dungeon:
         w_str = str(self.room_obj_lst[(room_number-1)].west)
         c_str = str(self.room_obj_lst[(room_number-1)].center)
 
-        if self.room_obj_lst[(room_number-1)].north == Room.wall \
-        and self.room_obj_lst[(room_number-1)].east == Room.wall \
-        and self.room_obj_lst[(room_number-1)].west == Room.wall \
-        and self.room_obj_lst[(room_number-1)].center == Room.center:
+        if self.room_obj_lst[(room_number-1)].north == Room.wall and\
+           self.room_obj_lst[(room_number-1)].east == Room.wall and\
+           self.room_obj_lst[(room_number-1)].west == Room.wall and\
+           self.room_obj_lst[(room_number-1)].center == Room.center:
 
             print("* Room is empty")
         else:
             if self.room_obj_lst[(room_number-1)].north != Room.wall:
                 print("* To the north there is a "
-                    + f"{self.parse_entity_string({n_str})}")
+                      + f"{self.parse_entity_string({n_str})}")
 
             if self.room_obj_lst[(room_number-1)].east != Room.wall:
                 print("* To the east there is a "
-                    + f"{self.parse_entity_string({e_str})}")
+                      + f"{self.parse_entity_string({e_str})}")
 
             if self.room_obj_lst[(room_number-1)].west != Room.wall:
                 print("* To the west there is a "
-                    + f"{self.parse_entity_string({w_str})}")
+                      + f"{self.parse_entity_string({w_str})}")
 
             if self.room_obj_lst[(room_number-1)].center != Room.center:
                 print("* To the center of the room there is a "
-                    + f"{self.parse_entity_string({c_str})}")
+                      + f"{self.parse_entity_string({c_str})}")
 
     def parse_entity_string(self, entity_string):
         """
@@ -917,13 +920,13 @@ def display_intro():
     print("Welcome to my Dungeon")
     print("You have entered an era of dragons")
     print("")
-    print("To play the game use the numbers on the menu of items and \
-        when asked for a")
-    print("choice enter one and press enter")
-    print("The goal of this game is to kill all the dragons in the \
-        least amount of time")
-    print("HINT: You need a sword and a shield to kill a dragon or \
-        you'll be toast!")
+    print("To play the game use the numbers on the menu of items and")
+    print("when asked for a choice enter one and press enter")
+
+    print("The goal of this game is to kill all the dragons in the")
+    print("least amount of time")
+    print("HINT: You need a sword and a shield to kill a dragon")
+    print("or you'll be toast!")
     print("\n\n\n")
     print("1. play Game \t 2. How To Play Game")
     print("3. Exit Game")
@@ -996,8 +999,9 @@ def main():
     # H is a medie pack when picked up restores the players health
     listof_medipacks_inrooms = ["H", "H", "H"]
 
-    dungeon.add_objects_to_rooms(listof_dragons_inrooms, \
-         listof_weapons_inrooms, listof_medipacks_inrooms)
+    dungeon.add_objects_to_rooms(listof_dragons_inrooms,
+                                 listof_weapons_inrooms,
+                                 listof_medipacks_inrooms)
 
     dungeon.show_dungeon_plan_with_entities()
 
