@@ -190,7 +190,7 @@ class Dungeon:
         spce = ' '
         print(str_main_wall)
         for x in range(6):  # number of rooms over 2 6 rows
-            for i in range(5):  # with 5 characters to represtent a room edge
+            for i in range(5):  # with 5 characters to represtent a room edge(floor plan)
                 if i == 2:  # middle row need to add the door str3
                     if x == 0:  # room 1 and room 2
 
@@ -236,7 +236,7 @@ class Dungeon:
         print(str_main_wall)
 
         for x in range(6):  # number of rooms over 2
-            for i in range(5):
+            for i in range(5):  # print 5 char to represnet room floor plan
 
                 if i == 0:  # top
                     if x == 0:  # room 1 and 2
@@ -678,7 +678,7 @@ class Dungeon:
                 print("Player killed by Dragon")
 
             self.remove_entity(room_number, direction)
-        else:
+        else:  # player dies
             self.player_health = 0
             print("-"*40)
             print("Game Over the player was killed by Dragon")

@@ -76,6 +76,10 @@ When the Dungeon class instance is instantiated the Dungeon constructor is calle
 
 ![Screenshot of classes with methods](assets/readme_images/class_diagram.png)
 
+The major code flow charts
+
+![Screenshot of major functions](assets/readme_images/basic_code_flow_charts.png)
+
 ## Wireframes/ Mockups and specification for the Game
 
 Spec for game
@@ -117,7 +121,7 @@ and a cheat mode which shows the plans of the building and enemys and powerups b
 ![Screenshot of level with compass](assets/readme_images/levelDirections.png)
 
 ### Wireframes
-
+```
 From flow chart Choice 1
 ********************************************************************************************
 *                               Welcome to my Dungeon
@@ -129,24 +133,19 @@ From flow chart Choice 1
 *                               Menu
 *                               Choose a Room to goto
 ********************************************************************************************
-1. Room 1
-2. Room 2
-3. Room 3
-4. Room 4
-5. Room 5
-6. Room 6
-7. Room 7
-8. Room 8
-9. Room 9
-10. Room 10
-11. Room 11
-12. Room 12
+1. Room 1       2. Room 2
+3. Room 3       4. Room 4
+5. Room 5       6. Room 6
+7. Room 7       8. Room 8
+9. Room 9       10. Room 10
+11. Room 11     12. Room 12
 13. Exit game
 
 ******************************************************************************************
 Choose: __
 ******************************************************************************************
-
+```
+```
 From flowchart choice 2
 if no powerups, weapons or dragons in the room
 ********************************************************************************************
@@ -164,7 +163,8 @@ if no powerups, weapons or dragons in the room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
-
+```
+```
 if dragon in the room at north wall
 ********************************************************************************************
 *
@@ -181,7 +181,8 @@ if dragon in the room at north wall
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
-
+```
+```
 if powerups at the east wall
 ********************************************************************************************
 *
@@ -198,7 +199,8 @@ if powerups at the east wall
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
-
+```
+```
 if weapons at west wall
 ********************************************************************************************
 *
@@ -215,7 +217,8 @@ if weapons at west wall
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
-
+```
+```
 if a dragon and weapons in the same room
 ********************************************************************************************
 *
@@ -232,3 +235,4 @@ if a dragon and weapons in the same room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
+```
