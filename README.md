@@ -76,7 +76,7 @@ When the Dungeon class instance is instantiated the Dungeon constructor is calle
 
 ![Screenshot of classes with methods](assets/readme_images/class_diagram.png)
 
-The major code flow charts
+The major functions in code flow charts
 
 ![Screenshot of major functions](assets/readme_images/basic_code_flow_charts.png)
 
