@@ -8,6 +8,12 @@ This game is a Python terminal game. Which runs in a Game Institute mock termina
 Users can explore the game level by entering rooms and picking up weapons and health as they go.
 They can also attack dragons 9 in total 3 big dragons and 6 little dragons.
 
+The link to the Heroku applictaion is: https://my-dungeon-4d54eec58a64.herokuapp.com/
+It should be noted that sometimes the application stalls which i think is a connection
+problem with Heroku as it work in VSCode and when I open a Heroku console and type python3 run.py
+it works. I think its todo with the number of connections allowed at once?
+
+
 ## How to play
 
 When the user loads the game they are first given the introduction screen where you are given some
