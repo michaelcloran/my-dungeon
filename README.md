@@ -92,7 +92,7 @@ A Dungeon has 12 rooms
 
 The level has 6 dragons and 3 big dragons
 the big dragons require a big shield and a long sword to kill
-The dragons are randomly generated in the rooms North, South, East, West, Center
+The dragons are randomly generated in the rooms North, East, West, Center
 
 you need a long sword to kill a big dragon and a sword to kill a little dragon
 there is 3 powerups for swords in the level a sword and a long sword
@@ -120,7 +120,7 @@ and a cheat mode which shows the plans of the building and enemys and powerups b
 
 ![Screenshot of level with compass](assets/readme_images/levelDirections.png)
 
-### Wireframes
+### Wireframes before game built
 ```
 From flow chart Choice 1
 ********************************************************************************************
