@@ -236,7 +236,8 @@ Choose: __
 ## Testing
 
 I have manually tested this project by doing the following.
-    * Passed the code through the PEP8 linter and confirmed that there are no problems
+
+* Passed the code through the PEP8 linter and confirmed that there are no problems
 
 ![Screenshot of PEP8 linter](assets/readme_images/pep8_linter.png)
 
