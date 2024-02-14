@@ -62,17 +62,18 @@ in the menu list and pressing enter.
 
     ![Screenshot of typical Room menu](assets/readme_images/typical_room_menu.png)
 
-* A timer is used in this game in order to give some measure of play. When the player starts to play the game the timer is started and when the player is killed a Game Over the player was killed by DRagon message is displayed with the amount of time in seconds that the player lasted in the game and the play again message is displayed with the introduction menu options rendered again for the player to easily reenter the game.
+* A timer is used in this game in order to give some measure of play. When the player starts to play the game the timer is started and when the player is killed a Game Over the player was killed by Dragon message is displayed with the amount of time in seconds that the player lasted in the game and the play again message is displayed with the introduction menu options rendered again for the player to easily reenter the game.
 
 * There is 9 dragons in this challenge dungeon 3 big dragons and 6 little dragons once the player kills all 9 then the game is over and a well done message is displayed and the time taken is shown in seconds and the introduction menu is rerendered for the option to play again.
 
 ## Future Features
-    * I would have loved to make this game concept into an actual 2D game with a graphics library but that option was not feasible with Heroku.
+
+* I would have loved to make this game concept into an actual 2D game with a graphics library but that option was not feasible with Heroku.
 
 ## Data Model
 I used 2 classes in this project Room and Dungeon. The Room class is used within the Dungeon class as there is a list of Room objects. 12 in this case.
 
-When the Dungeon class instance is instantiated the Dungeon constructor is called which call the create_rooms(number_of_rooms) method which creates the level then 3 lists are created in main to initialise the netities (listof_dragons_inrooms, listof_weapons_inrooms, listof_medipacks_inrooms) then these lists are passed to the dungeon object and the dungeon add_objects_to_rooms method where the level is populated with entities in random rooms at random positions and where the entities are randomly accessed. In this particular instance there is 18 entities 9 dragons, 3 shields ,3 swords and 3 medi packs
+When the Dungeon class instance is instantiated the Dungeon constructor is called which call the create_rooms(number_of_rooms) method which creates the level then 3 lists are created in main to initialise the entities (listof_dragons_inrooms, listof_weapons_inrooms, listof_medipacks_inrooms) then these lists are passed to the dungeon object and the dungeon add_objects_to_rooms method where the level is populated with entities in random rooms at random positions and where the entities are randomly accessed. In this particular instance there is 18 entities 9 dragons, 3 shields ,3 swords and 3 medi packs
 
 ![Screenshot of classes with methods](assets/readme_images/class_diagram.png)
 
@@ -155,11 +156,10 @@ if no powerups, weapons or dragons in the room
 *
 *********************************************************************************************
 1. go north
-2. go south
-3. go east
-4. go west
-6. goto middle of the room
-7. exit room
+2. go east
+3. go west
+4. goto middle of the room
+5. exit room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
@@ -173,11 +173,10 @@ if dragon in the room at north wall
 *
 *********************************************************************************************
 1. go north to attack dragon
-2. go south
-3. go east
-4. go west
-6. goto middle of the room
-7. exit room
+2. go east
+3. go west
+4. goto middle of the room
+5. exit room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
@@ -191,11 +190,10 @@ if powerups at the east wall
 *
 *********************************************************************************************
 1. go north
-2. go south
-3. go east to pickup powerups
-4. go west
-6. goto middle of the room
-7. exit room
+2. go east to pickup powerups
+3. go west
+4. goto middle of the room
+5. exit room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
@@ -209,11 +207,10 @@ if weapons at west wall
 *
 *********************************************************************************************
 1. go north
-2. go south
-3. go east
-4. go west to pickup small shield
-6. goto middle of the room
-7. exit room
+2. go east
+3. go west to pickup small shield
+4. goto middle of the room
+5. exit room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
@@ -227,11 +224,10 @@ if a dragon and weapons in the same room
 *
 *********************************************************************************************
 1. go north to attack dragon
-2. go south
-3. go east to pickup long sword
-4. go west
-6. goto middle of the room
-7. exit room
+2. go east to pickup long sword
+3. go west
+4. goto middle of the room
+5. exit room
 *********************************************************************************************
 Choose: __
 *********************************************************************************************
