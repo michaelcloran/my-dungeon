@@ -604,9 +604,7 @@ class Dungeon:
             else:
                 player_weapons_list.append(self.room_obj_lst[(room_number-1)].north)
             print("Pickedup:"+ self.parse_entity_string(self.room_obj_lst[(room_number-1)].north))
-            print("Contents of you weapons list:")
-            print(player_weapons_list)
-            self.remove_entity(room_number, direction)
+
         elif direction == "east":
             if self.room_obj_lst[(room_number-1)].east == "H":
 
@@ -614,27 +612,24 @@ class Dungeon:
             else:
                 player_weapons_list.append(self.room_obj_lst[(room_number-1)].east)
             print("Pickedup:"+ self.parse_entity_string(self.room_obj_lst[(room_number-1)].east))
-            print("Contents of you weapons list:")
-            print(player_weapons_list)
-            self.remove_entity(room_number, direction)
+
         elif direction == "west":
             if self.room_obj_lst[(room_number-1)].west == "H":
                 self.player_health = 100
             else:
                 player_weapons_list.append(self.room_obj_lst[(room_number-1)].west)
             print("Pickedup:"+ self.parse_entity_string(self.room_obj_lst[(room_number-1)].west))
-            print("Contents of you weapons list:")
-            print(player_weapons_list)
-            self.remove_entity(room_number, direction)
+
         elif direction == "center":
             if self.room_obj_lst[(room_number-1)].center == "H":
                 self.player_health = 100
             else:
                 player_weapons_list.append(self.room_obj_lst[(room_number-1)].center)
             print("Pickedup:"+ self.parse_entity_string(self.room_obj_lst[(room_number-1)].center))
-            print("Contents of you weapons list:")
-            print(player_weapons_list)
-            self.remove_entity(room_number, direction)
+
+        print("Contents of you weapons list:")
+        print(player_weapons_list)
+        self.remove_entity(room_number, direction)
 
     def attack_dragon(self, room_number, direction):
         """
