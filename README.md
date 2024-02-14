@@ -10,7 +10,7 @@ They can also attack dragons 9 in total 3 big dragons and 6 little dragons.
 
 The link to the Heroku applictaion is: https://my-dungeon-4d54eec58a64.herokuapp.com/
 It should be noted that sometimes the application stalls which i think is a connection
-problem with Heroku as it work in VSCode and when I open a Heroku console and type python3 run.py
+problem with Heroku as it works in VSCode and when I open a Heroku console and type python3 run.py
 it works. I think its todo with the number of connections allowed at once?
 
 
@@ -69,6 +69,8 @@ in the menu list and pressing enter.
 ## Future Features
 
 * I would have loved to make this game concept into an actual 2D game with a graphics library but that option was not feasible with Heroku.
+* To have a quickest time score sheet.
+
 
 ## Data Model
 I used 2 classes in this project Room and Dungeon. The Room class is used within the Dungeon class as there is a list of Room objects. 12 in this case.
@@ -243,6 +245,6 @@ I have manually tested this project by doing the following.
 
 ### Tests Done
 
-| Test | Description |
-| --- | --- |
+| Test | Description | Result | Expected | Notes |
+| --- | --- | --- | --- | --- |
 | testing | test101 |
