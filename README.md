@@ -331,7 +331,7 @@ Typical Screen 4
 
 ## Deployment
 
-For Deployment I setup the project/repo folder shooter on GitHub with template from Code Institute
+For Deployment I setup the project/repo folder my-dungeon on GitHub with template from Code Institute
 
 opened terminal went to document Root of the Apache 2 webserver sandbox (where i keep my repos)
 git clone https://github.com/michaelcloran/my-dungeon
