@@ -34,7 +34,7 @@ in the menu list and pressing enter.
 ## Existing Features
 
 * Random level generation
-    * The game level is generated then a script to choose a random room and random position with random entity from the listof_dragons_inrooms, listof_weaponss_inrooms, listof_medipacks_inrooms combined to select a random entity from this list(listof_entities_inrooms) and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the list listof_entities_inrooms so that entity of the 18 is used up and this algorithm continues till there is no more entities.
+    * The game level is generated then a script to choose a random room and random position with random entity from the listof_dragons_inrooms, listof_weapons_inrooms, listof_medipacks_inrooms combined to select a random entity from this list(listof_entities_inrooms) and in the random room the random entity is added to a random position north east west or center (remember south is the door) then this random entity is removed from the list listof_entities_inrooms so that entity of the 18 is used up and this algorithm continues till there is no more entities.
     * The player if the cheat sheet is not used then they have to roam the dungeon by entering rooms to get weapons and to kill dragons. A typical cheat sheet
     is shown below. It shows a floor plan and entities within it for easy viewing.
 
@@ -56,7 +56,7 @@ in the menu list and pressing enter.
 
     ![Screenshot of Dungeon Rom menu](assets/readme_images/dungeon_room_menu.png)
 
-    * Room listing. This menu is used once a user enters a room. It has some features for instance it has a message you have entered room (number) 1 for this case. It has a description of the room just under the line for the room numnber. In this case To the center of the room there is a little dragon. Directly under this it shows player health 100 and under this there is [] which shows you that the player has no weapons yet. When the player picks up a weapon the english description of the weapon is shown in this list. Under this is the menu options 1. go north, 2. go east, 3. go west, 4. attack little dragon to the center and 5. go south and exit room. if you enter a number and press enter a validation script is run and checks if its in range 1 to 5 and that the number is really a number otherwise a ValueError exception is thrown and you get a message say you have to enter a number between 1 and 5 please try again. This message and prompt for new input is shown directly under the current prompt.
+    * Room listing. This menu is used once a user enters a room. It has some features for instance it has a message you have entered room (number) 1 for this case. It has a description of the room just under the line for the room number. In this case To the center of the room there is a little dragon. Directly under this it shows player health 100 and under this there is [] which shows you that the player has no weapons yet. When the player picks up a weapon the english description of the weapon is shown in this list. Under this is the menu options 1. go north, 2. go east, 3. go west, 4. attack little dragon to the center and 5. go south and exit room. if you enter a number and press enter a validation script is run and checks if its in range 1 to 5 and that the number is really a number otherwise a ValueError exception is thrown and you get a message say you have to enter a number between 1 and 5 please try again. This message and prompt for new input is shown directly under the current prompt.
 
         Note: That the description and the menu options vary dependant on the contents of the room.
 
@@ -245,6 +245,60 @@ I have manually tested this project by doing the following.
 
 ### Tests Done
 
+Before I introduce you to the testing I need to describe the screens and show whats what!.
+
+So screen 1
+
+![Screen 1 screengrab](assets/readme_images/screen1.png)
+
+Screen 2
+
+![Screen 2 screengrab](assets/readme_images/screen2.png)
+
+Screen 3
+
+![Screen 3 screengrab](assets/readme_images/screen3.png)
+
+Typical Screen 4
+
+![Screen 4 screengrab](assets/readme_images/screen4.png)
+
 | Test | Description | Result | Expected | Notes |
 | --- | --- | --- | --- | --- |
-| testing | test101 |
+| On screen 1 number 2 was pressed and then the return key was pressed | Testing for hto play game functionality on screen 1 | The screen was rendered| The screen was rendered | |
+| On screen 1 11 was entered then the return key pressed| Testing for validation| Invalid choice displayed asking yo to enter a number 1 to 3| result as expected | |
+| On screen 1 cat was entered and the return key pressed| Testing for validation| Invalid choice displayed asking you to enter a number 1 to 3 | result as expected | |
+| On screen 2 return was pressed and then retuen key pressed| Testing for exit of screen 2 | On return Screen 1 is rendered | On return screen 1 rendered| On Screen 2 anything can be entered but when the return is pressed then Screen 1 is rendered |
+| On Screen 1 number 3 was pressed and then return key pressed| Testing for exit game | The Game ends| The game ends | |
+| On Screen 1 number 1 was pressed and then return was pressed | Testing for entering game | Screen 3 is displayed | Screen 3 is displayed| |
+| On Screen 3 a room number is pressed and then the return key is pressed | Testing for entering Screen 4 | Screen 4 Displayed | Screen 4 Displayed | |
+| On Screen 3 200 was entered and the return key pressed| Testing for validation| Invalid choice displayed asking you to enter a number 1 to 13 | result as expected | |
+| On Screen 3 cat was entered and return key pressed| Testing for validation | Invalid choice displayed asking you to enter a number 1 to 13 | result as expected | |
+| On Screen 3 1 was entered and return key pressed | Testing for rendering Screen 4| Screen 4 rendered | result as expected | |
+| On Screen 4 11 was entered and return key pressed| Testing for validation | Invalid choice is displayed asking you to enter a number 1 to 5 | result as expected | |
+| On Screen 4 cat was entered and return key pressed| Testing for validation | Invalid choice displayed asking you to enter a number between 1 and 5 | result as expected | |
+| On Screen 4 1 was entered and return pressed| Testing for go north | The player went north | result as expected | For this particular instance the Room is empty so there is nothing at the north wall|
+| On Screen 4 2 was entered and return pressed| Testing for go east | The player went to the east wall | result as expected| For this particular instance there was nothing to the east wall |
+| On Screen 4 3 was entered and return pressed | Testing for go west| The player went to the west wall | result as expected | For this particular instance the Room  was empty so there was nothing to the west wall |
+| On Screen 4  | | | | |
+| On Screen 4 4 was entered and return key pressed| Testing for go center| The player went to the center | result as expected | For this particular instance the Room was empty so there was nothing at the center of the Room |
+| On Screen 4 5 was entered and return key pressed| Testing for exit Room | The player exited the Room and Screen 3 rendered | result as expected | |
+| On Screen 3 2 was entered and return key pressed| Testing for enter Room 2| Screen 4 was rendered | result as expected | |
+| On Screen 4 1 was ented and return key pressed| Testing for go north | The player went north| result as expected| On this game level when it was generated when you enter Screen 3 there is nothing to the north wall |
+| On Screen 4 2 was entered and return key pressed| Testing for Pickup of little sword to the east | The little sword was picked up and the weapons list shows it| result as expected | On this level there was a little sword to the east Now the room is empty|
+| On Screen 4 since the Room is now empty 5 was chosen to exit the Room| Testing for Screen 3 render after picking up a weapon| Screen 3 rendered | result as expected | |
+| On Screen 3 3 was entered and return key pressed| Testing for entering Room 3 | Screen 4 rendered |  result as expected| |
+| On Screen 4 There is an option to pickup long sword to the east so 2 was entered and return key pressed| Testing for pickup of long sword | long sword picked up and the weapons list shows it along with other weapons | result as expected | |
+| On Screen 4 the Room 3 is now empty so choosing exit Room so 5 was entered and return key pressed| Testing for Screen 3 render from exit Room on Screen 4 | Room was exited | result as expected | |
+| On Screen 3 4 was entered to enter Room 4 and return key pressed | Testing for entering Room 4| Screen 4 rendered for Room 4 | result as expected | |
+| On Screen 4 Room 4 There is a dragon to the north so choosing to attack the dragon 1 entered and return key pressed| Testing for attack dragon functionality, notice the weapons in this case I have a little sword and a long sword| Game Over player killed by Dragon with a message showing this and time taken and the option to play again Screen 1 rerendered | result as expected | |
+| On Screen 1 after a game over play game option 1 was enter and return key pressed| testing for Screen 3 render| Screen 3 was rendered | result as expected | |
+| On Screen 3 4 was entered and return key pressed| Testing for entering Room 4 | Screen 4 was rendered for Room 4| result as expected | |
+| On Screen 4 Room 4 5 was entered to exit Room as nothing there in this case and return key pressed| Testing for Screen 4 Room 4 exit to Screen 3 | Screen 3 rendered successifully | result as expected | |
+| On Screen 3 5 was entered to enter Room 5 and return key pressed| Testing for Room 5 enter and Screen 4 render | Screen 4 rendered for Room 5| result as expected | |
+| On Screen 4 for Room 5 option to Attack Dragon to east or pickup medipack to center choosing 4 to pickup medipack| Testing for sucessiful pickup of medipack health 100%| medipack picked up | result as expected | |
+| On Screen 4 Room 5 option to attack dragon and nothing else in Room so choosing 5 exit Room 5 as no weapons yet| Testing for exit Room 5 | rerender of Screen 3 | result as expected | |
+| On Screen 3 choosing 6 to enter Room 6 and return key pressed| Testing for rendering of Room 6 Screen 4 | Screen 4 rendered for Room 6| result as expected| |
+| On Screen 4 Room 6 option to attack dragon to north and nothing else in Room choosing to attack dragon 1 entered and return key pressed| Testing for attack dragon with no weapons| Player killed with message displayed and Screen 1 rerendered with option to replay| result asa expected | |
+| | | | | |
+| | | | | |
