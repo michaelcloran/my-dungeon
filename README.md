@@ -29,6 +29,7 @@ It should be noted that sometimes the application stalls which i think is a conn
 problem with Heroku as it works in VSCode and when I open a Heroku console and type python3 run.py
 it works. I think its todo with the number of connections allowed at once?
 
+[Back to top](#)
 
 ## How to play
 
@@ -44,6 +45,8 @@ within the game level. This is handy for finding weapons and health by looking a
 
 typical instructions once in a room are Attack dragon or pickup health etc by pressing a number
 in the menu list and pressing enter.
+
+[Back to top](#)
 
 ## Features
 
@@ -82,11 +85,14 @@ in the menu list and pressing enter.
 
 * There is 9 dragons in this challenge dungeon 3 big dragons and 6 little dragons once the player kills all 9 then the game is over and a well done message is displayed and the time taken is shown in seconds and the introduction menu is rerendered for the option to play again.
 
+[Back to top](#)
+
 ## Future Features
 
 * I would have loved to make this game concept into an actual 2D game with a graphics library but that option was not feasible with Heroku.
 * To have a quickest time score sheet.
 
+[Back to top](#)
 
 ## Data Model
 I used 2 classes in this project Room and Dungeon. The Room class is used within the Dungeon class as there is a list of Room objects. 12 in this case.
@@ -98,6 +104,8 @@ When the Dungeon class instance is instantiated the Dungeon constructor is calle
 The major functions in code flow charts
 
 ![Screenshot of major functions](assets/readme_images/basic_code_flow_charts.png)
+
+[Back to top](#)
 
 ## Wireframes Mockups and specification for the Game
 
@@ -131,13 +139,19 @@ if you attack dragon with long sword and big shield you win 100% health
 The game has a normal mode which shows the plans of the building
 and a cheat mode which shows the plans of the building and enemys and powerups by rooms
 
+[Back to top](#)
+
 ## User interface flowchart
 
 ![Screenshot of flow chart for game](assets/readme_images/main_flowchart.png)
 
+[Back to top](#)
+
 ## Dungeon Coordinates Map
 
 ![Screenshot of level with compass](assets/readme_images/levelDirections.png)
+
+[Back to top](#)
 
 ## Wireframes before game built
 ```
@@ -251,6 +265,8 @@ Choose: __
 *********************************************************************************************
 ```
 
+[Back to top](#)
+
 ## Testing
 
 I have manually tested this project by doing the following.
@@ -258,6 +274,8 @@ I have manually tested this project by doing the following.
 * Passed the code through the PEP8 linter and confirmed that there are no problems
 
 ![Screenshot of PEP8 linter](assets/readme_images/pep8_linter.png)
+
+[Back to top](#)
 
 ### Tests Done
 
@@ -344,6 +362,7 @@ Typical Screen 4
 | On Screen 4 Room 4 option 2. Attack little dragon to east| Testing for little dragon attack with big shield little sword | Dragon slayed message with 85% health and rerender of Screen 4 for Room 4| result as expected | |
 | When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you toon seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
 
+[Back to top](#)
 
 ## Deployment
 
@@ -393,11 +412,11 @@ Things are now setup for development
     * Link the Heroku app to the repository
     * click Deploy
 
+[Back to top](#)
+
 ## Credits
 
 * I would like to thank my mentor for sound advice
 * Code institute for the deployment terminal
 
-
-
-
+[Back to top](#)
