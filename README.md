@@ -1,4 +1,20 @@
 
+- [Single User Dungeon](#single-user-dungeon)
+  * [How to play](#how-to-play)
+  * [Features](#features)
+  * [Existing Features](#existing-features)
+  * [Future Features](#future-features)
+  * [Data Model](#data-model)
+  * [Wireframes Mockups and specification for the Game](#wireframes-mockups-and-specification-for-the-game)
+  * [User interface flowchart](#user-interface-flowchart)
+  * [Dungeon Coordinates Map](#dungeon-coordinates-map)
+  * [Wireframes before game built](#wireframes-before-game-built)
+  * [Testing](#testing)
+    + [Tests Done](#tests-done)
+  * [Deployment](#deployment)
+  * [Credits](#credits)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
 
 
 # Single User Dungeon
@@ -83,7 +99,7 @@ The major functions in code flow charts
 
 ![Screenshot of major functions](assets/readme_images/basic_code_flow_charts.png)
 
-## Wireframes/ Mockups and specification for the Game
+## Wireframes Mockups and specification for the Game
 
 Spec for game
 
