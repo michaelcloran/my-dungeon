@@ -927,7 +927,7 @@ def display_intro():
     print("least amount of time")
     print("HINT: You need a sword and a shield to kill a dragon")
     print("or you'll be toast!")
-    print("\n\n\n")
+    print("\n\n")
     print("1. play Game \t 2. How To Play Game")
     print("3. Exit Game")
     print("\n\n")
