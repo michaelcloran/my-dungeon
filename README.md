@@ -328,3 +328,60 @@ Typical Screen 4
 | On Screen 4 Room 4 option 2. Attack little dragon to east| Testing for little dragon attack with big shield little sword | Dragon slayed message with 85% health and rerender of Screen 4 for Room 4| result as expected | |
 | When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you toon seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
 
+
+## Deployment
+
+For Deployment I setup the project/repo folder shooter on GitHub with template from Code Institute
+
+opened terminal went to document Root of the Apache 2 webserver sandbox (where i keep my repos)
+git clone https://github.com/michaelcloran/my-dungeon
+Cloning into 'my-dungeon'... etc
+cd my-dungeon
+in another terminal window
+cd /home/michael/.ssh
+ssh-keygen -t ed25519 -C "michaelcloran2010@gmail.com"
+asked for passphrase entered it
+more id_ed25519_mydungeon.pub
+from screen dump copied over into
+on GitHub went to settings deploy keys
+in text area copied over key with title my-dungeon
+went back to terminal /home/michael/.ssh/ ran more config
+
+edited config added
+#my-dungeon account pp3 code institute
+Host github.com-mydungeon
+HostName github.com
+ForwardAgent yes
+User git
+IdentityFile ~/.ssh/id_ed25519_mydungeon
+IdentitiesOnly yes
+from documentroot of web server (where i keep my repos) and then cd into cloned my-dungeon directory ran
+git remote set-url origin git+ssh://git@github.com-mydungeon:/michaelcloran/my-dungeon.git
+then ran
+ssh-add ~/.ssh/id_ed25519_mydungeon
+had to give passphrase but this should be the only time till i logout and then I have
+todo ssh-add ~/.ssh/id_ed25519_mydungeon again
+
+then edited Readme.md
+git add .
+git commit -m "docs initial commit"
+git push
+Things are now setup for development
+
+* Steps for deployment to Heroku
+
+    * Fork or clone my-dungeon
+    * Create a new Heroku app my-dungeon
+    * Set buildpacks to Python and NodeJS in that order
+    * set config var key PORT value 8000
+    * Link the Heroku app to the repository
+    * click Deploy
+
+## Credits
+
+* I would like to thank my mentor for sound advice
+* Code institute for the deployment terminal
+
+
+
+
