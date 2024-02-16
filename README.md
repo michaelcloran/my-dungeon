@@ -38,7 +38,7 @@ briefs of the game with 3 options. 1 to play the game, 2 to view the readme on h
 game and 3 to exit the game. when the user chooses to play the game they are shown a Room list
 and asked for a room number which they have to type and press enter then once in the room the
 contents of the room is described at the upper area of the room menu which has options to go north
-east west and south/door exit.
+east west center and south/door exit.
 
 If the player wants to cheat they can scroll up to the level plan which shows all rooms and entities
 within the game level. This is handy for finding weapons and health by looking at the room floor plan.
