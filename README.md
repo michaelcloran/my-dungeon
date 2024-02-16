@@ -300,7 +300,7 @@ Typical Screen 4
 | Test | Description | Result | Expected | Notes |
 | --- | --- | --- | --- | --- |
 | On screen 1 number 2 was pressed and then the return key was pressed | Testing for how play game functionality on screen 1 | The screen was rendered| The screen was rendered | |
-| On screen 1 11 was entered then the return key pressed| Testing for validation| Invalid choice displayed asking yo to enter a number 1 to 3| result as expected | |
+| On screen 1 11 was entered then the return key pressed| Testing for validation| Invalid choice displayed asking you to enter a number 1 to 3| result as expected | |
 | On screen 1 cat was entered and the return key pressed| Testing for validation| Invalid choice displayed asking you to enter a number 1 to 3 | result as expected | |
 | On screen 2 return was pressed and then return key pressed| Testing for exit of screen 2 | On return Screen 1 is rendered | On return screen 1 rendered| On Screen 2 anything can be entered but when the return is pressed then Screen 1 is rendered |
 | On Screen 1 number 3 was pressed and then return key pressed| Testing for exit game | The Game ends| The game ends | |
