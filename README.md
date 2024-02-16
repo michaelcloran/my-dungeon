@@ -341,7 +341,7 @@ Typical Screen 4
 | On Screen 4 Room 9 Room empty so choosing 5 to exit Room and pressing enter| Testing for Room 9 exit and rerender of Screen 3| Screen 3 rendered successifully| result as expected | |
 | On Screen 3 entering 10 and pressing enter| Testing for entering Room 10| Room 10 entered and Screen 4 rendered correctly | result as expected | |
 | On Screen 4 Room 10 options to 1. attack little dragon north, 2. Attack big dragon east, 3. Attack little dragon to west, 4. pickup long sword to center, choosing 4 to pickup long sword| Test pickup long sword | long sword picked up | result as expected | |
-| On Screen 4 Room 10 only have long sword with multiple dragons in the Room so choosing 5 to exit Room| Testing Exit Room 10 | SCreen 3 rerendered and Room 10 exited | result as expected | |
+| On Screen 4 Room 10 only have long sword with multiple dragons in the Room so choosing 5 to exit Room| Testing Exit Room 10 | Screen 3 rerendered and Room 10 exited | result as expected | |
 | On Screen 3 choosing 11 to enter Room 11 and pressing return| Testing for enter Room 11 | Screen 4 Room 11 entered| result as expected | |
 | On Screen 4 Room 11 with option to 2. Attack little dragon to east 3. pickup medipack to west, 4. pickup big shield to center choosing 4 and pressing return| Testing pickup of big shield | Big shield picked up and shown in weapons list | result as expected | |
 | On screen 4 Room 11 with option 2. to attack little dragon to east choosing 2 and pressing return| Testing for attack on dragon with long sword and big shield | Dragon slayed and health 100 | result as expected | with a long sword and big shield its possible to kill all dragons with 100 health |
