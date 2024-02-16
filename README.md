@@ -325,16 +325,16 @@ Typical Screen 4
 | On Screen 4 the Room 3 is now empty so choosing exit Room so 5 was entered and return key pressed| Testing for Screen 3 render from exit Room on Screen 4 | Room was exited | result as expected | |
 | On Screen 3 4 was entered to enter Room 4 and return key pressed | Testing for entering Room 4| Screen 4 rendered for Room 4 | result as expected | |
 | On Screen 4 Room 4 There is a dragon to the north so choosing to attack the dragon 1 entered and return key pressed| Testing for attack dragon functionality, notice the weapons in this case I have a little sword and a long sword| Game Over player killed by Dragon with a message showing this and time taken and the option to play again Screen 1 rerendered | result as expected | |
-| On Screen 1 after a game over play game option 1 was enter and return key pressed| testing for Screen 3 render| Screen 3 was rendered | result as expected | |
+| On Screen 1 after a game over play game option 1 was entered and return key pressed| Testing for Screen 3 render| Screen 3 was rendered | result as expected | |
 | On Screen 3 4 was entered and return key pressed| Testing for entering Room 4 | Screen 4 was rendered for Room 4| result as expected | |
 | On Screen 4 Room 4 5 was entered to exit Room as nothing there in this case and return key pressed| Testing for Screen 4 Room 4 exit to Screen 3 | Screen 3 rendered successifully | result as expected | |
 | On Screen 3 5 was entered to enter Room 5 and return key pressed| Testing for Room 5 enter and Screen 4 render | Screen 4 rendered for Room 5| result as expected | |
 | On Screen 4 for Room 5 option to Attack Dragon to east or pickup medipack to center choosing 4 to pickup medipack| Testing for sucessiful pickup of medipack health 100%| medipack picked up | result as expected | |
 | On Screen 4 Room 5 option to attack dragon and nothing else in Room so choosing 5 exit Room 5 as no weapons yet| Testing for exit Room 5 | rerender of Screen 3 | result as expected | |
 | On Screen 3 choosing 6 to enter Room 6 and return key pressed| Testing for rendering of Room 6 Screen 4 | Screen 4 rendered for Room 6| result as expected| |
-| On Screen 4 Room 6 option to attack dragon to north and nothing else in Room choosing to attack dragon 1 entered and return key pressed| Testing for attack dragon with no weapons| Player killed with message displayed and Screen 1 rerendered with option to replay| result asa expected | |
+| On Screen 4 Room 6 option to attack dragon to north and nothing else in Room choosing to attack dragon 1 entered and return key pressed| Testing for attack dragon with no weapons| Player killed with message displayed and Screen 1 rerendered with option to replay| result as expected | |
 | On Screen 3 choose option 7 to enter Room 7 and press enter | Testing for rendering of Screen 4 for Room 7| Screen 4 Rendered for Room 7 | result as expected| |
-| On Screen 4 for Rom 7 Room is empty so choose 5 and pressing enter to exit Room 7| Testing exit of Room 7 and rerender of Screen 3 | Screen 3 rendered | result as expected | |
+| On Screen 4 for Room 7 Room is empty so choose 5 and pressing enter to exit Room 7| Testing exit of Room 7 and rerender of Screen 3 | Screen 3 rendered | result as expected | |
 | On Screen 3 choosing 8 to enter Room 8 and pressing enter| Testing of render of Screen 4 for Room 8| Room 8 Screen 4 rendered | result as expected | |
 | On Screen 4 Room 8 option to Attack dragon to the north but have no weapons yet so choosing 5 to exit and pressing enter| Testing exit of Room 8| Room 8 exited and rerender of Screen 3 | result as expected | |
 | On Screen 3 choosing Room 9 so enter 9 and pressing enter| Testing for entering Room 9 | Room 9 Screen 4 rendered correctly | result as expected | |
@@ -359,7 +359,7 @@ Typical Screen 4
 | On Screen 4 Room 2 option 4 attack big dragon to center choosing 4 and pressing enter| Testing for attack big dragon with little shield and long sword | Dragon slayed message and notice health 75% and rerender of Screen 4 for Room 2 | result as expected | |
 | On Screen 4 Room 3 option 1. Attack big dragon to north choosing 1 and pressing return| Testing for attack dragon with big shield and little sword | Dragon slayed message rerender of Room 3 Screen 4 with 85% health | result as expected| |
 | On Screen 4 Room 4 option 2. Attack little dragon to east| Testing for little dragon attack with big shield little sword | Dragon slayed message with 85% health and rerender of Screen 4 for Room 4| result as expected | |
-| When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you toon seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
+| When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you took seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
 
 [Back to top](#)
 
