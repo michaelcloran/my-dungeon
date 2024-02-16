@@ -302,7 +302,7 @@ Typical Screen 4
 | On screen 1 number 2 was pressed and then the return key was pressed | Testing for how play game functionality on screen 1 | The screen was rendered| The screen was rendered | |
 | On screen 1 11 was entered then the return key pressed| Testing for validation| Invalid choice displayed asking yo to enter a number 1 to 3| result as expected | |
 | On screen 1 cat was entered and the return key pressed| Testing for validation| Invalid choice displayed asking you to enter a number 1 to 3 | result as expected | |
-| On screen 2 return was pressed and then retuen key pressed| Testing for exit of screen 2 | On return Screen 1 is rendered | On return screen 1 rendered| On Screen 2 anything can be entered but when the return is pressed then Screen 1 is rendered |
+| On screen 2 return was pressed and then return key pressed| Testing for exit of screen 2 | On return Screen 1 is rendered | On return screen 1 rendered| On Screen 2 anything can be entered but when the return is pressed then Screen 1 is rendered |
 | On Screen 1 number 3 was pressed and then return key pressed| Testing for exit game | The Game ends| The game ends | |
 | On Screen 1 number 1 was pressed and then return was pressed | Testing for entering game | Screen 3 is displayed | Screen 3 is displayed| |
 | On Screen 3 a room number is pressed and then the return key is pressed | Testing for entering Screen 4 | Screen 4 Displayed | Screen 4 Displayed | |
