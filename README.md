@@ -314,7 +314,6 @@ Typical Screen 4
 | On Screen 4 1 was entered and return pressed| Testing for go north | The player went north | result as expected | For this particular instance the Room is empty so there is nothing at the north wall|
 | On Screen 4 2 was entered and return pressed| Testing for go east | The player went to the east wall | result as expected| For this particular instance there was nothing to the east wall |
 | On Screen 4 3 was entered and return pressed | Testing for go west| The player went to the west wall | result as expected | For this particular instance the Room  was empty so there was nothing to the west wall |
-| On Screen 4  | | | | |
 | On Screen 4 4 was entered and return key pressed| Testing for go center| The player went to the center | result as expected | For this particular instance the Room was empty so there was nothing at the center of the Room |
 | On Screen 4 5 was entered and return key pressed| Testing for exit Room | The player exited the Room and Screen 3 rendered | result as expected | |
 | On Screen 3 2 was entered and return key pressed| Testing for enter Room 2| Screen 4 was rendered | result as expected | |
