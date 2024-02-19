@@ -361,6 +361,10 @@ Typical Screen 4
 | On Screen 4 Room 4 option 2. Attack little dragon to east| Testing for little dragon attack with big shield little sword | Dragon slayed message with 85% health and rerender of Screen 4 for Room 4| result as expected | |
 | When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you took seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
 
+### Bugs
+
+* I have done quite a lot of testing and did'nt find any bugs.
+
 [Back to top](#)
 
 ## Deployment
