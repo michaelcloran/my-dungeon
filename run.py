@@ -710,8 +710,7 @@ class Dungeon:
             print(f"You lasted:{durationof_game}")
             print("Play Again?")
             print("-"*40)
-            display_intro()
-            get_intro_input()
+            get_enter_replay_choice_menu()
 
         if self.player_health <= 0:
             print("-"*40)
@@ -722,8 +721,7 @@ class Dungeon:
             print(f"You lasted:{durationof_game}")
             print("Play Again?")
             print("-"*40)
-            display_intro()
-            get_intro_input()
+            get_enter_replay_choice_menu()
 
         if self.numberof_dragons == 0:
             print("-"*40)
@@ -734,8 +732,7 @@ class Dungeon:
             print(f"You took {durationof_game} to play the game. Well done!!")
             print("Play Again?")
             print("-"*40)
-            display_intro()
-            get_intro_input()
+            get_enter_replay_choice_menu()
 
     def remove_entity(self, room_number, direction):
         """
@@ -836,6 +833,26 @@ class Dungeon:
             print(f"Error:{entity_string}")
 
 
+def get_enter_replay_choice_menu():
+    """
+    This function gets the user input and validates it
+    if the user enter 2 the game is ended.
+    """
+    print("\n1. Play Again \t\t 2. Exit Game\n\n")
+    data_str = input("Enter option:\n")
+
+    if validate_enter_replay_choice_data(data_str):
+        # enter room and display options
+        if int(data_str) == 2:  # Exit game
+            sys.exit()
+
+        del player_weapons_list[:]
+        main()
+
+    else:
+        get_enter_replay_choice_menu()
+
+
 def validate_enter_dungeon_choice_data(value):
     """
     This function validates the user input for the dungeon room choice dialog
@@ -854,7 +871,31 @@ def validate_enter_dungeon_choice_data(value):
         if not (val >= 1 and val <= 13):
             raise ValueError()
     except ValueError:
-        print("Invalid choice: You must enter a Number between 1 and 13, \
+        print("Invalid choice: You must enter a Number between 1 and 13,"
+              + "please try again.\n")
+        return False
+
+    return True
+
+
+def validate_enter_replay_choice_data(value):
+    """
+    This function validates the options
+    if the value is not between 1 and 2 a message is diplayed
+    also if the value is not an integer a message is displayed
+
+    Args:
+        value (string)
+
+    return:
+        True if all goes well or False if there is exception thrown
+    """
+    try:
+        val = int(value)
+        if not (val >= 1 and val <= 2):
+            raise ValueError()
+    except ValueError:
+        print("Invalid choice:You must enter a number between 1 and 2, \
             please try again.\n")
         return False
 
