@@ -946,8 +946,8 @@ def validate_intro_choice_data(value):
         if not (val >= 1 and val <= 3):
             raise ValueError()
     except ValueError:
-        print("Invalid choice: You mush enter a Number either 1 or 3!, \
-            please try again.\n")
+        print("Invalid choice: You mush enter a Number either 1 or 3!, "
+              + "please try again.\n")
         return False
 
     return True
