@@ -920,8 +920,8 @@ def validate_enter_room_choice_data(value):
         if not (val >= 1 and val <= 5):
             raise ValueError()
     except ValueError:
-        print("Invalid choice:You must enter a number between 1 and 5, \
-            please try again.\n")
+        print("Invalid choice:You must enter a number between 1 and 5, "
+              + "please try again.\n")
         return False
 
     return True
