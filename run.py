@@ -872,7 +872,7 @@ def validate_enter_dungeon_choice_data(value):
             raise ValueError()
     except ValueError:
         print("Invalid choice: You must enter a Number between 1 and 13,"
-              + "please try again.\n")
+               + "please try again.\n")
         return False
 
     return True
@@ -895,8 +895,8 @@ def validate_enter_replay_choice_data(value):
         if not (val >= 1 and val <= 2):
             raise ValueError()
     except ValueError:
-        print("Invalid choice:You must enter a number between 1 and 2, \
-            please try again.\n")
+        print("Invalid choice:You must enter a number between 1 and 2,"
+               + "please try again.\n")
         return False
 
     return True
