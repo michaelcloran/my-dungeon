@@ -301,6 +301,10 @@ Typical Screen 4
 
 ![Screen 4 screengrab](assets/readme_images/screen4.png)
 
+Typical Screen 5
+
+![SCreen 5 screengrab](assets/readme_images/screen5.png)
+
 | Test | Description | Result | Expected | Notes |
 | --- | --- | --- | --- | --- |
 | On screen 1 number 2 was pressed and then the return key was pressed | Testing for how play game functionality on screen 1 | The screen was rendered| The screen was rendered | |
