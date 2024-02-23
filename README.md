@@ -332,8 +332,8 @@ Typical Screen 5
 | On Screen 4 There is an option to pickup long sword to the east so 2 was entered and return key pressed| Testing for pickup of long sword | long sword picked up and the weapons list shows it along with other weapons | result as expected | |
 | On Screen 4 the Room 3 is now empty so choosing exit Room so 5 was entered and return key pressed| Testing for Screen 3 render from exit Room on Screen 4 | Room was exited | result as expected | |
 | On Screen 3 4 was entered to enter Room 4 and return key pressed | Testing for entering Room 4| Screen 4 rendered for Room 4 | result as expected | |
-| On Screen 4 Room 4 There is a dragon to the north so choosing to attack the dragon 1 entered and return key pressed| Testing for attack dragon functionality, notice the weapons in this case I have a little sword and a long sword| Game Over player killed by Dragon with a message showing this and time taken and the option to play again Screen 1 rerendered | result as expected | |
-| On Screen 1 after a game over play game option 1 was entered and return key pressed| Testing for Screen 3 render| Screen 3 was rendered | result as expected | |
+| On Screen 4 Room 4 There is a dragon to the north so choosing to attack the dragon 1 entered and return key pressed| Testing for attack dragon functionality, notice the weapons in this case I have a little sword and a long sword| Game Over player killed by Dragon with a message showing this and time taken and the option to play again Screen 5 rerendered | result as expected | |
+| On Screen 1 after a game over play game option 5 was entered and return key pressed| Testing for Screen 3 render| Screen 3 was rendered | result as expected | |
 | On Screen 3 4 was entered and return key pressed| Testing for entering Room 4 | Screen 4 was rendered for Room 4| result as expected | |
 | On Screen 4 Room 4 5 was entered to exit Room as nothing there in this case and return key pressed| Testing for Screen 4 Room 4 exit to Screen 3 | Screen 3 rendered successifully | result as expected | |
 | On Screen 3 5 was entered to enter Room 5 and return key pressed| Testing for Room 5 enter and Screen 4 render | Screen 4 rendered for Room 5| result as expected | |
@@ -358,7 +358,7 @@ Typical Screen 5
 | On Screen 4 in Room 12 with options 1. pickup little shield to north, 3. Attack big dragon to west, Attack little dragon to center choosing 3 to attack big dragon as have long sword and big shield and pressing enter| Testing for Attack of big dragon with long sword and big shield | Dragon slayed messgae and Screen 4 for Room 12 rerendered| result as expected | |
 | On Screen 4 in Room 12 option 4. attack little dragon to center choosing 4 and pressing enter| Testing for attack little dragon with long sword and big shield | Dragon slayed message and Screen 4 for Room 12 rerendered | result as expected | |
 | On Screen 4 Room 9 option 3. pickup little sword to west entering 3 and pressing return | Testing for pickup of little sword | little sword picked up | result as expected | |
-| On Screen 4 Room 4 option 2. attack little dragon to east| Testing for attack little dragon with little sword | Game over player killed by dragon message displayed with time and play again option Screen 1 rerendered | result as expected | |
+| On Screen 4 Room 4 option 2. attack little dragon to east| Testing for attack little dragon with little sword | Game over player killed by dragon message displayed with time and play again option Screen 5 rerendered | result as expected | |
 | On Screen 4 Room 5 option 2. pickup little shield to east choosing 2 and pressing enter| Testing for pickup of little shield | litle shield picked up and Screen 4 rerendered | result as expected | |
 | On Screen 4 Room 5 option 3. Attack little dragon to west| Testing for attack of dragon with little shield| Game Over player killed by Dragon you lasted and play again message | result as expected | |
 | On Screen 4 Room 10 with option 3. attack big dragon to west entering 3 and pressing return | Testing attack big dragon with little shield and little sword | dragon slayed messgae notice health is 50% | result as expected | |
@@ -367,7 +367,10 @@ Typical Screen 5
 | On Screen 4 Room 2 option 4 attack big dragon to center choosing 4 and pressing enter| Testing for attack big dragon with little shield and long sword | Dragon slayed message and notice health 75% and rerender of Screen 4 for Room 2 | result as expected | |
 | On Screen 4 Room 3 option 1. Attack big dragon to north choosing 1 and pressing return| Testing for attack dragon with big shield and little sword | Dragon slayed message rerender of Room 3 Screen 4 with 85% health | result as expected| |
 | On Screen 4 Room 4 option 2. Attack little dragon to east| Testing for little dragon attack with big shield little sword | Dragon slayed message with 85% health and rerender of Screen 4 for Room 4| result as expected | |
-| When all dragons killed | Testing for rerender of Screen 1 and Game over you have slayed all the dragons, you took seconds and play again message | the message displayed and Screen 1 rerendered with option to replay | result as expected | |
+| When all dragons killed | Testing for rerender of Screen 5 and Game over you have slayed all the dragons, you took seconds and play again message | the message displayed and Screen 5 rerendered with option to replay | result as expected | |
+| On screen 5 play agian choosing to enter 3| Testing for valid input Invalid choice shown asking you to enter a number between 1 and 2 | The message is displayed and screen 5 is rendered | result as expected | |
+| On Screen 5 choosing to replay game| Testing for render of screen 5 after killing all dragons with well done screen| Screen 5 rendered | result as expected | |
+
 
 ### Bugs
 
