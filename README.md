@@ -60,7 +60,7 @@ in the menu list and pressing enter.
     ![Screenshot of floor plan typical cheat sheet](assets/readme_images/cheat_floor_plan.png)
 
 * Input validation and error checking
-    * There is three validation scripts. Firstly the introduction screen has to be validated with 3 options and then once you choose to play the game a menu with the room number of the dungeon rooms list is shown and then the system has to validate input once entered a room. Where you can choose a direction with go direction, Attack dragon at direction, pickup entity at direction would be typical generic commands executed by choosing the option number and pressing enter.
+    * There is four validation scripts. Firstly the introduction screen has to be validated with 3 options and then once you choose to play the game a menu with the room number of the dungeon rooms list is shown and then the system has to validate input once entered a room. Where you can choose a direction with go direction, Attack dragon at direction, pickup entity at direction would be typical generic commands executed by choosing the option number and pressing enter.
     * All input screens show a list and a number to select an item in the list
     * Once an item is chosen the user inputs the number of the item and presses enter
     * the validation checks for valid number and a range of number for the appropiate menu and displays an error message if the number is out of range
@@ -80,6 +80,10 @@ in the menu list and pressing enter.
         Note: That the description and the menu options vary dependant on the contents of the room.
 
     ![Screenshot of typical Room menu](assets/readme_images/typical_room_menu.png)
+
+    * Game over replay screen is used to display game over and to show the time the player was playing the game. it also allows the player to replay the game or to exit the game.
+
+    ![Screenshot of typical game over menu](assets/readme_images/screen5.png)
 
 * A timer is used in this game in order to give some measure of play. When the player starts to play the game the timer is started and when the player is killed a Game Over the player was killed by Dragon message is displayed with the amount of time in seconds that the player lasted in the game and the play again message is displayed with the introduction menu options rendered again for the player to easily reenter the game.
 
